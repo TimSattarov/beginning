@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace Lesson01
 {
-    public class Library : IEnumerable
+    public class Library : IEnumerable, IEnumerator
     {
+        int position;
         public List<Book> books = new List<Book>()
         {
             new Book() {Author = "Александр Дюма", Title = "Граф Монте-Кристо", Id = 0},
@@ -32,7 +34,32 @@ namespace Lesson01
 
         public IEnumerator GetEnumerator()
         {
-            return books.GetEnumerator();
+            return this;
+        }
+
+        public object Current
+        {
+            get
+            {
+                return books[position];
+            }
+        }
+
+        public bool MoveNext()
+        {
+            if (position == books.Count - 1)
+            {
+                Reset();
+                return false;
+            }
+            position++;
+            return true;
+        }
+
+        public void Reset()
+        {
+            position = -1;
         }
     }
+  
 }
