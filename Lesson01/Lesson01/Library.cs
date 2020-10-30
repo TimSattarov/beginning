@@ -34,7 +34,7 @@ namespace Lesson01
 
         public IEnumerator GetEnumerator()
         {
-            return this;
+            return this;    //необходимо уточнить...
         }
 
         public object Current
