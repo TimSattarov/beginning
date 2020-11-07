@@ -36,6 +36,9 @@ namespace ProductService.Services
 
         public void Init()
         {
+             var _images = _imageClient.GetAll();
+             var _prices = _priceClient.GetAll();
+
             _products = new List<ProductModel>
             {
                 new ProductModel() 
@@ -44,8 +47,8 @@ namespace ProductService.Services
                     Brand = "Samsung", 
                     Model = "A71", 
                     Category = "Phone",
-                    Images = _imageClient.GetAll().Result.Where(x => x.ProductId == 0),
-                    Prices = _priceClient.GetAll().Result.Where(x => x.ProductId == 0)
+                    Images = _images.Result.Where(x => x.ProductId == 0),
+                    Prices = _prices.Result.Where(x => x.ProductId == 0)
                 },
                 new ProductModel() 
                 {
@@ -53,8 +56,8 @@ namespace ProductService.Services
                     Brand = "Samsung", 
                     Model = "S10", 
                     Category = "Phone",
-                    Images = _imageClient.GetAll().Result.Where(x => x.ProductId == 1),
-                    Prices = _priceClient.GetAll().Result.Where(x => x.ProductId == 1)
+                    Images = _images.Result.Where(x => x.ProductId == 1),
+                    Prices = _prices.Result.Where(x => x.ProductId == 1)
                 },
                 new ProductModel() 
                 {
@@ -62,8 +65,8 @@ namespace ProductService.Services
                     Brand = "Samsung", 
                     Model = "UE24H", 
                     Category = "TV",
-                    Images = _imageClient.GetAll().Result.Where(x => x.ProductId == 2),
-                    Prices = _priceClient.GetAll().Result.Where(x => x.ProductId == 2)
+                    Images = _images.Result.Where(x => x.ProductId == 2),
+                    Prices = _prices.Result.Where(x => x.ProductId == 2)
                 },
                 new ProductModel() 
                 {
@@ -71,8 +74,8 @@ namespace ProductService.Services
                     Brand = "Acer", 
                     Model = "Aspire7", 
                     Category = "Notebook",
-                    Images = _imageClient.GetAll().Result.Where(x => x.ProductId == 3),
-                    Prices = _priceClient.GetAll().Result.Where(x => x.ProductId == 3)
+                    Images = _images.Result.Where(x => x.ProductId == 3),
+                    Prices = _prices.Result.Where(x => x.ProductId == 3)
                 },
                 new ProductModel() 
                 {
@@ -80,8 +83,8 @@ namespace ProductService.Services
                     Brand = "Dell", 
                     Model = "Inspirion", 
                     Category = "Notebook",
-                    Images = _imageClient.GetAll().Result.Where(x => x.ProductId == 4),
-                    Prices = _priceClient.GetAll().Result.Where(x => x.ProductId == 4)
+                    Images = _images.Result.Where(x => x.ProductId == 4),
+                    Prices = _prices.Result.Where(x => x.ProductId == 4)
                 },
                 new ProductModel() 
                 {
@@ -89,8 +92,8 @@ namespace ProductService.Services
                     Brand = "Asus", 
                     Model = "ZenBook", 
                     Category = "Notebook",
-                    Images = _imageClient.GetAll().Result.Where(x => x.ProductId == 5),
-                    Prices = _priceClient.GetAll().Result.Where(x => x.ProductId == 5)
+                    Images = _images.Result.Where(x => x.ProductId == 5),
+                    Prices = _prices.Result.Where(x => x.ProductId == 5)
                 }
             };
         }

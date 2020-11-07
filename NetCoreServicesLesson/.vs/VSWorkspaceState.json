@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\PriceService",
+    "\\PriceService\\Configuration",
+    "\\PriceService\\Controllers",
+    "\\PriceService\\Repositories"
+  ],
+  "SelectedNode": "\\PriceService\\appsettings.json",
+  "PreviewInSolutionExplorer": false
+}

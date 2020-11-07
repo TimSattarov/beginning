@@ -1,0 +1,4 @@
+C:\Users\Sattarik\Documents\GitHub\beginning\NetCoreServicesLesson\repository\obj\Debug\netstandard2.0\repository.csprojAssemblyReference.cache
+C:\Users\Sattarik\Documents\GitHub\beginning\NetCoreServicesLesson\repository\obj\Debug\netstandard2.0\repository.AssemblyInfoInputs.cache
+C:\Users\Sattarik\Documents\GitHub\beginning\NetCoreServicesLesson\repository\obj\Debug\netstandard2.0\repository.AssemblyInfo.cs
+C:\Users\Sattarik\Documents\GitHub\beginning\NetCoreServicesLesson\repository\obj\Debug\netstandard2.0\repository.csproj.CoreCompileInputs.cache

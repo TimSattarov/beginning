@@ -1,4 +1,7 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using AutoMapper;
+using ImageService.Entities;
 using ImageService.Models;
 using ImageService.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -9,38 +12,49 @@ namespace ImageService.Controllers
     [ApiController]
     public class ImageController : ControllerBase
     {
-        private readonly IImageService _imageService;
+        private readonly IImageServiceTest _imageServiceTest;
+        private readonly IMapper _mapper;
 
 
-        public ImageController(IImageService imageService)
+        public ImageController(IImageServiceTest imageServiceTest, IMapper mapper)
         {
-            _imageService = imageService;        
+            _imageServiceTest = imageServiceTest;
+            _mapper = mapper;
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<ImageModel>> GetAll()
+        public async Task<IEnumerable<ImageModel>> Get()
         {
-            var collection = _imageService.GetAll();
-
-            if (collection == null)
-            {
-                return BadRequest("Products not found");
-            }
-
-            return Ok(collection);
+            var imageEntities = await _imageServiceTest.GetAll();
+            var images = _mapper.Map<IEnumerable<ImageModel>>(imageEntities);
+            return images;
         }
 
-        [HttpGet("{id}")]
-        public ActionResult<ImageModel> Get(int id)
-        {
-            var model = _imageService.Get(id);
+        //[HttpGet]
+        //public ActionResult<IEnumerable<ImageModel>> GetAll()
+        //{
+        //    var collection = _imageService.GetAll();
 
-            if (model == null)
-            {
-                return BadRequest("Product not found");
-            }
+        //    if (collection == null)
+        //    {
+        //        return BadRequest("Images not found");
+        //    }
 
-            return Ok(model);
-        }
+        //    return Ok(collection);
+        //}
+
+        //[HttpGet("{id}")]
+        //public ActionResult<ImageModel> Get(int id)
+        //{
+        //    var model = _imageService.Get(id);
+
+        //    if (model == null)
+        //    {
+        //        return BadRequest("Image not found");
+        //    }
+
+        //    return Ok(model);
+        //}
+
     }
 }
