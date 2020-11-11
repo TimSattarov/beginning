@@ -29,7 +29,8 @@ namespace PriceService
                 options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
                 options.SerializerSettings.DefaultValueHandling = Newtonsoft.Json.DefaultValueHandling.Ignore;
             });
-            
+
+
             services.AddSwaggerGenNewtonsoftSupport();
             services.AddSwaggerGen();
             services.AddControllers();

@@ -8,7 +8,7 @@ namespace PriceService.Configuration
     {
         public AutoMapping()
         {
-            CreateMap<PriceDbModel, PriceModel>().ReverseMap();
+            CreateMap<Price, PriceModel>().ReverseMap();
         }  
     }
 }

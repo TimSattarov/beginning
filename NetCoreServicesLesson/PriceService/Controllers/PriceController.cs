@@ -27,28 +27,63 @@ namespace PriceService.Controllers
             _mapper = mapper;
         }
 
-
-        // [HttpGet("{id}")]
-        // public ActionResult<PriceModel> Get(int id)
-        // {
-        //     var model = _priceRepository.Get(id);
-
-        //     if (model == null)
-        //     {
-        //         return BadRequest("Prices not found");
-        //     }
-
-        //     return Ok(model);
-        // }
-
-
         [HttpGet]
         public async Task<IEnumerable<PriceModel>> GetAll()
         {
             var priceDbModels = await _priceRepository.GetAll();
             var prices = _mapper.Map<IEnumerable<PriceModel>>(priceDbModels);
-
             return prices;
+        }
+
+        [HttpGet("{id}")]
+        public async Task<PriceModel> GetById(Guid id)
+        {
+            var priceDbModel = await _priceRepository.GetById(id);
+            var price = _mapper.Map<PriceModel>(priceDbModel);
+            return price;
+        }
+        
+
+        [HttpPost]
+        public async Task CreateMany(IEnumerable<PriceModel> prices)
+        {
+            var priceDbModels = _mapper.Map<IEnumerable<Price>>(prices);
+            await _priceRepository.CreateMany(priceDbModels);
+        }
+
+        [HttpPost("{id}")]
+        public async Task Create(PriceModel price)
+        {
+            var priceDbModel = _mapper.Map<Price>(price);
+            await _priceRepository.Create(priceDbModel);
+        }
+
+
+        [HttpPut]
+        public async Task UpdateMany(IEnumerable<PriceModel> prices)
+        {
+            var priceDbModels = _mapper.Map<IEnumerable<Price>>(prices);
+            await _priceRepository.UpdateMany(priceDbModels);
+        }
+
+        [HttpPut("{id}")]
+        public async Task Update(PriceModel price)
+        {
+            var priceDbModel = _mapper.Map<Price>(price);
+            await _priceRepository.Update(priceDbModel);
+        }
+
+
+        [HttpDelete]
+        public async Task DeleteMany(IEnumerable<Guid> entityIds)
+        {
+            await _priceRepository.DeleteMany(entityIds);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task Delete(Guid id)
+        {
+            await _priceRepository.Delete(id);
         }
     }
 }

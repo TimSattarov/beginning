@@ -2,7 +2,7 @@ using repository;
 
 namespace PriceService.Repositories
 {
-    public interface IPriceRepository : IBaseRepository<PriceDbModel>
+    public interface IPriceRepository : IBaseRepository<Price>
     {
          
     }

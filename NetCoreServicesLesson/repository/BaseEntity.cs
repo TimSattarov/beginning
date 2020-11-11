@@ -4,7 +4,7 @@ namespace repository
 {
     public class BaseEntity
     {
-        public int Id { get; set;}
+        public Guid Id { get; set;}
         public DateTime CreatedDate { get; set;}
         public Guid CreatedBy { get; set;}
         public DateTime LastSavedDate { get; set; }

@@ -1,11 +1,16 @@
+using ImageService.Entities;
+using System;
+
 namespace ImageService.Models
 {
-    public class ImageModel
+    public class ImageModel : Image
     {
-        public int Id {get;set;}
-        public string Name {get;set;}
-        public string Path {get; set;}
-        public int ProductId { get; set; }
+        public ImageModel() : base()
+        {
+        }
 
+        public Guid Id { get; set; }
+        public Guid ProductId { get; set; }
+        public string Url { get; set; }
     }
 }

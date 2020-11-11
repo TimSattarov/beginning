@@ -1,13 +1,19 @@
+using System;
+using PriceService.Repositories;
+
 namespace PriceService.Models
 {
-    public class PriceModel
+    public class PriceModel : Price
     {
-        public int Id { get; set; }
+        public PriceModel() : base()
+        {
+        }
+        public Guid Id { get; set; }
         public float CurrentPrice { get; set; }
         public float SalePrice { get; set; }
         public float RRPrice { get; set; }
+        public bool IsLast { get; set; }
 
-         public int ProductId { get; set; }
-        // public ProductModel Product { get; set; }
+         public Guid ProductId { get; set; } 
     }
 }

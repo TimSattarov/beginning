@@ -12,7 +12,7 @@ namespace ImageService.Configuration
     {
         public AutoMapping()
         {
-            CreateMap<ImageEntity, ImageModel>();
+            CreateMap<Image, ImageModel>().ReverseMap();
         }
     }
 }

@@ -1,24 +1,161 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using ImageService.Entities;
 using ImageService.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace ImageService.Services
 {
     public class ImageService : IImageService
     {
-        public IEnumerable<ImageModel> _images = new List<ImageModel>
+        private readonly ImageContext _imageContext;
+        public ImageService(ImageContext imageContet)
         {
-            new ImageModel() {Id = 0, Name = "0_1", Path = "", ProductId = 0},
-            new ImageModel() {Id = 1, Name = "0_2", Path = "", ProductId = 0},
-            new ImageModel() {Id = 2, Name = "0_3", Path = "", ProductId = 0},
-            new ImageModel() {Id = 3, Name = "1_1", Path = "", ProductId = 1},
-            new ImageModel() {Id = 4, Name = "1_2", Path = "", ProductId = 1},
-            new ImageModel() {Id = 5, Name = "2_1", Path = "", ProductId = 2},
-            new ImageModel() {Id = 6, Name = "3_1", Path = "", ProductId = 3}
-        };
+            _imageContext = imageContet;
+        }
 
-        public IEnumerable<ImageModel> GetAll() => _images;
 
-        public ImageModel Get(int id) => _images.FirstOrDefault(i => i.Id == id);
+        public async Task<Image> Get(Guid id)
+        {
+            return await _imageContext.Images.FirstOrDefaultAsync(i => i.Id == id && i.IsDeleted == false);
+        }
+
+        public async Task<IEnumerable<Image>> GetAll()
+        {
+            return await _imageContext.Images.Where(i => i.IsDeleted == false).ToListAsync();
+        }
+
+
+
+        public async Task Create(Image entity)
+        {
+
+            if (entity.Id == Guid.Empty)
+            {
+                entity.Id = Guid.NewGuid();
+            }
+
+            entity.CreatedDate = DateTime.UtcNow;
+            entity.LastSavedDate = DateTime.UtcNow;
+
+            entity.CreatedBy = Guid.NewGuid();        //Заглушка
+            entity.LastSavedBy = Guid.NewGuid();      //Заглушка
+
+            await _imageContext.Images.AddAsync(entity);
+            await _imageContext.SaveChangesAsync();
+        }
+
+        public async Task CreateMany(IEnumerable<Image> entities)
+        {
+            foreach (var entity in entities)
+            {
+                if (entity.Id == Guid.Empty)
+                {
+                    entity.Id = Guid.NewGuid();
+                }
+
+                entity.CreatedDate = DateTime.UtcNow;
+                entity.LastSavedDate = DateTime.UtcNow;
+
+                entity.CreatedBy = Guid.NewGuid();        //Заглушка
+                entity.LastSavedBy = Guid.NewGuid();      //Заглушка
+            }
+
+            await _imageContext.Images.AddRangeAsync(entities);
+            await _imageContext.SaveChangesAsync();
+        }
+
+
+
+        public async Task Update(Image entity)
+        {
+            entity.LastSavedDate = DateTime.UtcNow;
+            entity.LastSavedBy = Guid.NewGuid();   //Заглушка
+
+            _imageContext.Images.Update(entity);
+            await _imageContext.SaveChangesAsync();
+        }
+
+        public async Task UpdateMany(IEnumerable<Image> entities)
+        {
+            foreach (var entity in entities)
+            {
+                entity.LastSavedDate = DateTime.UtcNow;
+                entity.LastSavedBy = Guid.NewGuid();      //Заглушка
+            }
+
+            _imageContext.Images.UpdateRange(entities);
+            await _imageContext.SaveChangesAsync();
+        }
+
+
+
+        public async Task Delete(Guid id)
+        {
+            var entity = await _imageContext.Images.FirstOrDefaultAsync(i => i.Id == id);
+
+            if (entity != null)
+            {
+                entity.LastSavedDate = DateTime.UtcNow;
+                entity.LastSavedBy = Guid.NewGuid();   //Заглушка
+                entity.IsDeleted = true;
+
+                _imageContext.Images.Update(entity);
+                await _imageContext.SaveChangesAsync();
+            }
+        }
+
+        public async Task DeleteMany(IEnumerable<Guid> entityIds)
+        {
+            var entities = _imageContext.Images.Where(i => entityIds.Contains(i.Id));
+
+            if (entities != null)
+            {
+                foreach (var entity in entities)
+                {
+                    entity.LastSavedDate = DateTime.UtcNow;
+                    entity.LastSavedBy = Guid.NewGuid();   //Заглушка
+                    entity.IsDeleted = true;
+                }
+                _imageContext.Images.UpdateRange(entities);
+                await _imageContext.SaveChangesAsync();
+            }
+        }
+
+        
+
+        public async Task Restore(Guid id)
+        {
+            var entity = await _imageContext.Images.FirstOrDefaultAsync(i => i.Id == id);
+
+            if (entity != null)
+            {
+                entity.LastSavedDate = DateTime.UtcNow;
+                entity.LastSavedBy = Guid.NewGuid();   //Заглушка
+                entity.IsDeleted = false;
+
+                _imageContext.Images.Update(entity);
+                await _imageContext.SaveChangesAsync();
+            }
+        }
+
+        public async Task RestoreMany(IEnumerable<Guid> entityIds)
+        {
+            var entities = _imageContext.Images.Where(i => entityIds.Contains(i.Id));
+
+            if (entities != null)
+            {
+                foreach (var entity in entities)
+                {
+                    entity.LastSavedDate = DateTime.UtcNow;
+                    entity.LastSavedBy = Guid.NewGuid();   //Заглушка
+                    entity.IsDeleted = false;
+                }
+                _imageContext.Images.UpdateRange(entities);
+                await _imageContext.SaveChangesAsync();
+            }
+        }
     }
 }

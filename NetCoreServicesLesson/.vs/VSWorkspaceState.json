@@ -1,11 +1,12 @@
 {
   "ExpandedNodes": [
     "",
-    "\\PriceService",
-    "\\PriceService\\Configuration",
+    "\\ImageService\\Controllers",
+    "\\ImageService\\Services",
     "\\PriceService\\Controllers",
-    "\\PriceService\\Repositories"
+    "\\PriceService\\Repositories",
+    "\\ProductService\\bin"
   ],
-  "SelectedNode": "\\PriceService\\appsettings.json",
+  "SelectedNode": "\\ProductService",
   "PreviewInSolutionExplorer": false
 }

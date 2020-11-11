@@ -38,11 +38,13 @@ namespace ImageService
                 options.SerializerSettings.DefaultValueHandling = Newtonsoft.Json.DefaultValueHandling.Ignore;
             });
 
+            
+            services.AddTransient<IImageService, ImageService.Services.ImageService>();
             services.AddSwaggerGenNewtonsoftSupport();
             services.AddSwaggerGen();
-            services.AddTransient<IImageServiceTest, ImageServiceTest>();
+            
             services.AddControllers();
-            services.AddTransient<IImageService, ImageService.Services.ImageService>();
+            
             var connectionString = Configuration.GetConnectionString("Image");
             services.AddDbContext<ImageContext>(options => options.UseSqlServer(connectionString));
             services.AddAutoMapper(typeof(Startup));

@@ -8,13 +8,13 @@ namespace repository
     {
         Task<T> GetById(Guid id);
         Task<IEnumerable<T>> GetAll();
-        Task<T> Create(T entity);
-        Task<IEnumerable<T>> CreateMany(IEnumerable<T> entities);
-        Task<bool> Update(T entity);
-        Task<bool> UpdateMany(IEnumerable<T> entities);
-        Task<bool> Delete(Guid id);
-        Task<bool> DeleteMany(IEnumerable<Guid> id);
-        Task<bool> Restore(Guid id);
-        Task<bool> RestoreMany(IEnumerable<Guid> id);
+        Task Create(T entity);
+        Task CreateMany(IEnumerable<T> entities);
+        Task Update(T entity);
+        Task UpdateMany(IEnumerable<T> entities);
+        Task Delete(Guid id);
+        Task DeleteMany(IEnumerable<Guid> entityIds);
+        Task Restore(Guid id);
+        Task RestoreMany(IEnumerable<Guid> entityIds);
     }
 }
