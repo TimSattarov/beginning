@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using ProductService.Models;
@@ -30,7 +31,7 @@ namespace ProductService.Controllers
         }
 
         [HttpGet("{id}")]
-        public ActionResult<ProductModel> Get(int id)
+        public ActionResult<ProductModel> Get(Guid id)
         {
             var model = _productService.Get(id);
 

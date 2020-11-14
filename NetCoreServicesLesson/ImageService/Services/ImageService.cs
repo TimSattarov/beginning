@@ -2,19 +2,34 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ImageService.Clients;
 using ImageService.Entities;
 using ImageService.Models;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace ImageService.Services
 {
     public class ImageService : IImageService
     {
         private readonly ImageContext _imageContext;
-        public ImageService(ImageContext imageContet)
+        private readonly IPoligonClient _poligonClient;
+
+        public ImageService(ImageContext imageContet, IPoligonClient poligonClient)
         {
             _imageContext = imageContet;
+            _poligonClient = poligonClient;
         }
+
+
+
+        public async Task<PoligonModel> GetAllPoligon()
+        {
+            return await _poligonClient.GetAll();
+        }
+
+
+
 
 
         public async Task<Image> Get(Guid id)
@@ -31,7 +46,6 @@ namespace ImageService.Services
 
         public async Task Create(Image entity)
         {
-
             if (entity.Id == Guid.Empty)
             {
                 entity.Id = Guid.NewGuid();
@@ -40,8 +54,8 @@ namespace ImageService.Services
             entity.CreatedDate = DateTime.UtcNow;
             entity.LastSavedDate = DateTime.UtcNow;
 
-            entity.CreatedBy = Guid.NewGuid();        //Çàãëóøêà
-            entity.LastSavedBy = Guid.NewGuid();      //Çàãëóøêà
+            entity.CreatedBy = Guid.NewGuid();        //Ð—Ð°Ð³Ð»ÑƒÑˆÐºÐ°
+            entity.LastSavedBy = Guid.NewGuid();      //Ð—Ð°Ð³Ð»ÑƒÑˆÐºÐ°
 
             await _imageContext.Images.AddAsync(entity);
             await _imageContext.SaveChangesAsync();
@@ -59,8 +73,8 @@ namespace ImageService.Services
                 entity.CreatedDate = DateTime.UtcNow;
                 entity.LastSavedDate = DateTime.UtcNow;
 
-                entity.CreatedBy = Guid.NewGuid();        //Çàãëóøêà
-                entity.LastSavedBy = Guid.NewGuid();      //Çàãëóøêà
+                entity.CreatedBy = Guid.NewGuid();        //Ð—Ð°Ð³Ð»ÑƒÑˆÐºÐ°
+                entity.LastSavedBy = Guid.NewGuid();      //Ð—Ð°Ð³Ð»ÑƒÑˆÐºÐ°
             }
 
             await _imageContext.Images.AddRangeAsync(entities);
@@ -72,7 +86,7 @@ namespace ImageService.Services
         public async Task Update(Image entity)
         {
             entity.LastSavedDate = DateTime.UtcNow;
-            entity.LastSavedBy = Guid.NewGuid();   //Çàãëóøêà
+            entity.LastSavedBy = Guid.NewGuid();   //Ð—Ð°Ð³Ð»ÑƒÑˆÐºÐ°
 
             _imageContext.Images.Update(entity);
             await _imageContext.SaveChangesAsync();
@@ -83,7 +97,7 @@ namespace ImageService.Services
             foreach (var entity in entities)
             {
                 entity.LastSavedDate = DateTime.UtcNow;
-                entity.LastSavedBy = Guid.NewGuid();      //Çàãëóøêà
+                entity.LastSavedBy = Guid.NewGuid();      //Ð—Ð°Ð³Ð»ÑƒÑˆÐºÐ°
             }
 
             _imageContext.Images.UpdateRange(entities);
@@ -99,7 +113,7 @@ namespace ImageService.Services
             if (entity != null)
             {
                 entity.LastSavedDate = DateTime.UtcNow;
-                entity.LastSavedBy = Guid.NewGuid();   //Çàãëóøêà
+                entity.LastSavedBy = Guid.NewGuid();   //Ð—Ð°Ð³Ð»ÑƒÑˆÐºÐ°
                 entity.IsDeleted = true;
 
                 _imageContext.Images.Update(entity);
@@ -116,7 +130,7 @@ namespace ImageService.Services
                 foreach (var entity in entities)
                 {
                     entity.LastSavedDate = DateTime.UtcNow;
-                    entity.LastSavedBy = Guid.NewGuid();   //Çàãëóøêà
+                    entity.LastSavedBy = Guid.NewGuid();   //Ð—Ð°Ð³Ð»ÑƒÑˆÐºÐ°
                     entity.IsDeleted = true;
                 }
                 _imageContext.Images.UpdateRange(entities);
@@ -133,7 +147,7 @@ namespace ImageService.Services
             if (entity != null)
             {
                 entity.LastSavedDate = DateTime.UtcNow;
-                entity.LastSavedBy = Guid.NewGuid();   //Çàãëóøêà
+                entity.LastSavedBy = Guid.NewGuid();   //Ð—Ð°Ð³Ð»ÑƒÑˆÐºÐ°
                 entity.IsDeleted = false;
 
                 _imageContext.Images.Update(entity);
@@ -150,7 +164,7 @@ namespace ImageService.Services
                 foreach (var entity in entities)
                 {
                     entity.LastSavedDate = DateTime.UtcNow;
-                    entity.LastSavedBy = Guid.NewGuid();   //Çàãëóøêà
+                    entity.LastSavedBy = Guid.NewGuid();   //Ð—Ð°Ð³Ð»ÑƒÑˆÐºÐ°
                     entity.IsDeleted = false;
                 }
                 _imageContext.Images.UpdateRange(entities);

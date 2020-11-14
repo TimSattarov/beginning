@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "1RtrD8Q9tjjkQ+44n5P9p4y0B/F5DW8shtjdlvLdw0ciGoUad0RtTdcegBQ/PpNEKAVpLGC0Lj8tfvQXp8P2Bg==",
+  "dgSpecHash": "iWRh6hCmesEzOZDyk182O+qPpIRNFPWtdEfyO6YgUtdeMWk0ZfDc44YFeawng+59VmmDXMAH6DgkJ6AwawOZ2A==",
   "success": true,
   "projectFilePath": "C:\\Users\\Sattarik\\Documents\\GitHub\\beginning\\NetCoreServicesLesson\\ImageService\\ImageService.csproj",
   "expectedPackageFiles": [
@@ -25,6 +25,7 @@
     "C:\\Users\\Sattarik\\.nuget\\packages\\microsoft.extensions.configuration.binder\\3.1.9\\microsoft.extensions.configuration.binder.3.1.9.nupkg.sha512",
     "C:\\Users\\Sattarik\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\3.1.9\\microsoft.extensions.dependencyinjection.3.1.9.nupkg.sha512",
     "C:\\Users\\Sattarik\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\3.1.9\\microsoft.extensions.dependencyinjection.abstractions.3.1.9.nupkg.sha512",
+    "C:\\Users\\Sattarik\\.nuget\\packages\\microsoft.extensions.http\\3.1.7\\microsoft.extensions.http.3.1.7.nupkg.sha512",
     "C:\\Users\\Sattarik\\.nuget\\packages\\microsoft.extensions.logging\\3.1.9\\microsoft.extensions.logging.3.1.9.nupkg.sha512",
     "C:\\Users\\Sattarik\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\3.1.9\\microsoft.extensions.logging.abstractions.3.1.9.nupkg.sha512",
     "C:\\Users\\Sattarik\\.nuget\\packages\\microsoft.extensions.options\\3.1.9\\microsoft.extensions.options.3.1.9.nupkg.sha512",
@@ -41,6 +42,8 @@
     "C:\\Users\\Sattarik\\.nuget\\packages\\microsoft.win32.registry\\4.5.0\\microsoft.win32.registry.4.5.0.nupkg.sha512",
     "C:\\Users\\Sattarik\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Users\\Sattarik\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512",
+    "C:\\Users\\Sattarik\\.nuget\\packages\\refit\\5.2.1\\refit.5.2.1.nupkg.sha512",
+    "C:\\Users\\Sattarik\\.nuget\\packages\\refit.httpclientfactory\\5.2.1\\refit.httpclientfactory.5.2.1.nupkg.sha512",
     "C:\\Users\\Sattarik\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
     "C:\\Users\\Sattarik\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\Sattarik\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
@@ -102,6 +105,7 @@
     "C:\\Users\\Sattarik\\.nuget\\packages\\system.text.encoding\\4.3.0\\system.text.encoding.4.3.0.nupkg.sha512",
     "C:\\Users\\Sattarik\\.nuget\\packages\\system.text.encoding.codepages\\4.5.0\\system.text.encoding.codepages.4.5.0.nupkg.sha512",
     "C:\\Users\\Sattarik\\.nuget\\packages\\system.text.encoding.extensions\\4.3.0\\system.text.encoding.extensions.4.3.0.nupkg.sha512",
+    "C:\\Users\\Sattarik\\.nuget\\packages\\system.text.json\\4.7.2\\system.text.json.4.7.2.nupkg.sha512",
     "C:\\Users\\Sattarik\\.nuget\\packages\\system.text.regularexpressions\\4.3.0\\system.text.regularexpressions.4.3.0.nupkg.sha512",
     "C:\\Users\\Sattarik\\.nuget\\packages\\system.threading\\4.3.0\\system.threading.4.3.0.nupkg.sha512",
     "C:\\Users\\Sattarik\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",

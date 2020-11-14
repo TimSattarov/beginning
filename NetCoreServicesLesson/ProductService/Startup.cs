@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -40,6 +41,9 @@ namespace ProductService
                 options.SerializerSettings.DefaultValueHandling = DefaultValueHandling.Ignore;
             });
 
+            services.AddEntityFrameworkNpgsql().AddDbContext<ProductContext>
+                (options => options.UseNpgsql(Configuration.GetConnectionString("Product")));
+
             var refitSettings = new RefitSettings
             {
                 ContentSerializer = new NewtonsoftJsonContentSerializer(new JsonSerializerSettings
@@ -50,15 +54,16 @@ namespace ProductService
                 })
             };
 
-            services.TryAddTransient<IImageClient>(_=>RestService.For<IImageClient>(new HttpClient()
+            services.TryAddTransient(_=>RestService.For<IImageClient>(new HttpClient()
                 {
                     BaseAddress = new Uri("https://localhost:5005")
                 }, refitSettings));
 
-            services.TryAddTransient<IPriceClient>(_=>RestService.For<IPriceClient>(new HttpClient()
+            services.TryAddTransient(_=>RestService.For<IPriceClient>(new HttpClient()
                 {
                     BaseAddress = new Uri("https://localhost:5003")
                 }, refitSettings));
+
 
             services.AddSwaggerGenNewtonsoftSupport();
             services.AddSwaggerGen();

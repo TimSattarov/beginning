@@ -24,7 +24,7 @@ namespace ProductService.Services
         public IEnumerable<ProductModel> GetAll() => _products;
 
 
-        public ProductModel Get(int id)
+        public ProductModel Get(Guid id)
         {
             var product = _products.FirstOrDefault(p => p.Id == id); 
             if (product == null)
@@ -33,6 +33,9 @@ namespace ProductService.Services
             }
             return product;
         }        
+
+        Guid ProductGuid;
+        private Guid GetGuid() => ProductGuid = Guid.NewGuid();
 
         public void Init()
         {
@@ -43,58 +46,80 @@ namespace ProductService.Services
             {
                 new ProductModel() 
                 {
-                    Id = 0, 
+                    Id = GetGuid(), 
                     Brand = "Samsung", 
                     Model = "A71", 
                     Category = "Phone",
-                    Images = _images.Result.Where(x => x.ProductId == 0),
-                    Prices = _prices.Result.Where(x => x.ProductId == 0)
+                    Images = _images.Result.Where(x => x.ProductId == ProductGuid),
+                    Prices = _prices.Result.Where(x => x.ProductId == ProductGuid)
                 },
                 new ProductModel() 
                 {
-                    Id = 1, 
+                    Id = GetGuid(), 
                     Brand = "Samsung", 
                     Model = "S10", 
                     Category = "Phone",
-                    Images = _images.Result.Where(x => x.ProductId == 1),
-                    Prices = _prices.Result.Where(x => x.ProductId == 1)
+                    Images = _images.Result.Where(x => x.ProductId == ProductGuid),
+                    Prices = _prices.Result.Where(x => x.ProductId == ProductGuid)
                 },
                 new ProductModel() 
                 {
-                    Id = 2, 
+                    Id = GetGuid(), 
                     Brand = "Samsung", 
                     Model = "UE24H", 
                     Category = "TV",
-                    Images = _images.Result.Where(x => x.ProductId == 2),
-                    Prices = _prices.Result.Where(x => x.ProductId == 2)
+                    Images = _images.Result.Where(x => x.ProductId == ProductGuid),
+                    Prices = _prices.Result.Where(x => x.ProductId == ProductGuid)
                 },
                 new ProductModel() 
                 {
-                    Id = 3, 
+                    Id = GetGuid(), 
                     Brand = "Acer", 
                     Model = "Aspire7", 
                     Category = "Notebook",
-                    Images = _images.Result.Where(x => x.ProductId == 3),
-                    Prices = _prices.Result.Where(x => x.ProductId == 3)
+                    Images = _images.Result.Where(x => x.ProductId == ProductGuid),
+                    Prices = _prices.Result.Where(x => x.ProductId == ProductGuid)
                 },
                 new ProductModel() 
                 {
-                    Id = 4, 
+                    Id = GetGuid(), 
                     Brand = "Dell", 
                     Model = "Inspirion", 
                     Category = "Notebook",
-                    Images = _images.Result.Where(x => x.ProductId == 4),
-                    Prices = _prices.Result.Where(x => x.ProductId == 4)
+                    Images = _images.Result.Where(x => x.ProductId == ProductGuid),
+                    Prices = _prices.Result.Where(x => x.ProductId == ProductGuid)
                 },
                 new ProductModel() 
                 {
-                    Id = 5, 
+                    Id = GetGuid(), 
                     Brand = "Asus", 
                     Model = "ZenBook", 
                     Category = "Notebook",
-                    Images = _images.Result.Where(x => x.ProductId == 5),
-                    Prices = _prices.Result.Where(x => x.ProductId == 5)
+                    Images = _images.Result.Where(x => x.ProductId == ProductGuid),
+                    Prices = _prices.Result.Where(x => x.ProductId == ProductGuid)
+                },
+
+
+
+                new ProductModel()
+                {
+                    Id = Guid.Parse("e44fd6dd-2bf3-477a-b11c-cd1c289295f3"),
+                    Brand = "test1", 
+                    Model = "test1", 
+                    Category = "test1",
+                    Images = _images.Result.Where(x => x.ProductId == Guid.Parse("e44fd6dd-2bf3-477a-b11c-cd1c289295f3")),
+                    Prices = _prices.Result.Where(x => x.ProductId == Guid.Parse("e44fd6dd-2bf3-477a-b11c-cd1c289295f3"))
+                },
+                new ProductModel()
+                {
+                    Id = Guid.Parse("f75787b0-9f30-4549-b2d9-10dd6dddc930"),
+                    Brand = "test2", 
+                    Model = "test2", 
+                    Category = "test2",
+                    Images = _images.Result.Where(x => x.ProductId == Guid.Parse("f75787b0-9f30-4549-b2d9-10dd6dddc930")),
+                    Prices = _prices.Result.Where(x => x.ProductId == Guid.Parse("f75787b0-9f30-4549-b2d9-10dd6dddc930"))
                 }
+
             };
         }
     }

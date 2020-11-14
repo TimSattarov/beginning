@@ -10,8 +10,6 @@ C:\Users\Sattarik\Documents\GitHub\beginning\NetCoreServicesLesson\ProductServic
 C:\Users\Sattarik\Documents\GitHub\beginning\NetCoreServicesLesson\ProductService\obj\Debug\netcoreapp3.1\ProductService.csprojAssemblyReference.cache
 C:\Users\Sattarik\Documents\GitHub\beginning\NetCoreServicesLesson\ProductService\obj\Debug\netcoreapp3.1\ProductService.AssemblyInfoInputs.cache
 C:\Users\Sattarik\Documents\GitHub\beginning\NetCoreServicesLesson\ProductService\obj\Debug\netcoreapp3.1\ProductService.AssemblyInfo.cs
-C:\Users\Sattarik\Documents\GitHub\beginning\NetCoreServicesLesson\ProductService\obj\Debug\netcoreapp3.1\ProductService.csproj.CoreCompileInputs.cache
-C:\Users\Sattarik\Documents\GitHub\beginning\NetCoreServicesLesson\ProductService\obj\Debug\netcoreapp3.1\ProductService.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Sattarik\Documents\GitHub\beginning\NetCoreServicesLesson\ProductService\obj\Debug\netcoreapp3.1\ProductService.RazorTargetAssemblyInfo.cache
 C:\Users\Sattarik\Documents\GitHub\beginning\NetCoreServicesLesson\ProductService\obj\Debug\netcoreapp3.1\staticwebassets\ProductService.StaticWebAssets.Manifest.cache
 C:\Users\Sattarik\Documents\GitHub\beginning\NetCoreServicesLesson\ProductService\obj\Debug\netcoreapp3.1\staticwebassets\ProductService.StaticWebAssets.xml
@@ -42,4 +40,14 @@ C:\Users\Sattarik\Documents\GitHub\beginning\NetCoreServicesLesson\ProductServic
 C:\Users\Sattarik\Documents\GitHub\beginning\NetCoreServicesLesson\ProductService\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\Sattarik\Documents\GitHub\beginning\NetCoreServicesLesson\ProductService\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\Sattarik\Documents\GitHub\beginning\NetCoreServicesLesson\ProductService\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
-C:\Users\Sattarik\Documents\GitHub\beginning\NetCoreServicesLesson\ProductService\obj\Debug\netcoreapp3.1\ProductService.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Sattarik\Documents\GitHub\beginning\NetCoreServicesLesson\ProductService\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\Sattarik\Documents\GitHub\beginning\NetCoreServicesLesson\ProductService\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
+C:\Users\Sattarik\Documents\GitHub\beginning\NetCoreServicesLesson\ProductService\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
+C:\Users\Sattarik\Documents\GitHub\beginning\NetCoreServicesLesson\ProductService\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\Sattarik\Documents\GitHub\beginning\NetCoreServicesLesson\ProductService\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\Sattarik\Documents\GitHub\beginning\NetCoreServicesLesson\ProductService\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\Sattarik\Documents\GitHub\beginning\NetCoreServicesLesson\ProductService\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\Sattarik\Documents\GitHub\beginning\NetCoreServicesLesson\ProductService\bin\Debug\netcoreapp3.1\Npgsql.dll
+C:\Users\Sattarik\Documents\GitHub\beginning\NetCoreServicesLesson\ProductService\bin\Debug\netcoreapp3.1\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\Users\Sattarik\Documents\GitHub\beginning\NetCoreServicesLesson\ProductService\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
+C:\Users\Sattarik\Documents\GitHub\beginning\NetCoreServicesLesson\ProductService\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll

@@ -30,6 +30,8 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.9",
           "Microsoft.Extensions.Options": "3.1.9",
           "Newtonsoft.Json": "12.0.3",
+          "Refit": "5.2.1",
+          "Refit.HttpClientFactory": "5.2.1",
           "Swashbuckle.AspNetCore": "5.6.3",
           "Swashbuckle.AspNetCore.Newtonsoft": "5.6.3",
           "Microsoft.EntityFrameworkCore": "3.1.9",
@@ -128,7 +130,6 @@
           "Microsoft.Extensions.FileSystemGlobbing": "3.1.0.0",
           "Microsoft.Extensions.Hosting.Abstractions": "3.1.0.0",
           "Microsoft.Extensions.Hosting": "3.1.0.0",
-          "Microsoft.Extensions.Http": "3.1.0.0",
           "Microsoft.Extensions.Identity.Core": "3.1.0.0",
           "Microsoft.Extensions.Identity.Stores": "3.1.0.0",
           "Microsoft.Extensions.Localization.Abstractions": "3.1.0.0",
@@ -273,7 +274,6 @@
           "System.Text.Encoding.Reference": "4.1.2.0",
           "System.Text.Encoding.Extensions.Reference": "4.1.2.0",
           "System.Text.Encodings.Web": "4.0.5.0",
-          "System.Text.Json": "4.0.1.0",
           "System.Text.RegularExpressions.Reference": "4.2.2.0",
           "System.Threading.Channels": "4.0.2.0",
           "System.Threading.Reference": "4.1.2.0",
@@ -594,6 +594,22 @@
           "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
         }
       },
+      "Microsoft.Extensions.Http/3.1.7": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "3.1.9",
+          "Microsoft.Extensions.Logging": "3.1.9",
+          "Microsoft.Extensions.Options": "3.1.9"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.Extensions.Http.dll": {
+            "assemblyVersion": "3.1.7.0",
+            "fileVersion": "3.100.720.37108"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp3.1/Microsoft.Extensions.Http.dll": {}
+        }
+      },
       "Microsoft.Extensions.Logging/3.1.9": {
         "dependencies": {
           "Microsoft.Extensions.Configuration.Binder": "3.1.9",
@@ -781,6 +797,36 @@
         },
         "compile": {
           "lib/netstandard2.0/Newtonsoft.Json.Bson.dll": {}
+        }
+      },
+      "Refit/5.2.1": {
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.3",
+          "System.Text.Json": "4.7.2"
+        },
+        "runtime": {
+          "lib/netstandard2.1/Refit.dll": {
+            "assemblyVersion": "5.2.0.0",
+            "fileVersion": "5.2.1.24565"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.1/Refit.dll": {}
+        }
+      },
+      "Refit.HttpClientFactory/5.2.1": {
+        "dependencies": {
+          "Microsoft.Extensions.Http": "3.1.7",
+          "Refit": "5.2.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Refit.HttpClientFactory.dll": {
+            "assemblyVersion": "5.2.0.0",
+            "fileVersion": "5.2.1.24565"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Refit.HttpClientFactory.dll": {}
         }
       },
       "runtime.native.System/4.3.0": {
@@ -1350,6 +1396,17 @@
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0",
           "System.Text.Encoding": "4.3.0"
+        }
+      },
+      "System.Text.Json/4.7.2": {
+        "runtime": {
+          "lib/netcoreapp3.0/System.Text.Json.dll": {
+            "assemblyVersion": "4.0.1.2",
+            "fileVersion": "4.700.20.21406"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp3.0/System.Text.Json.dll": {}
         }
       },
       "System.Text.RegularExpressions/4.3.0": {
@@ -2014,12 +2071,6 @@
       "Microsoft.Extensions.Hosting/3.1.0.0": {
         "compile": {
           "Microsoft.Extensions.Hosting.dll": {}
-        },
-        "compileOnly": true
-      },
-      "Microsoft.Extensions.Http/3.1.0.0": {
-        "compile": {
-          "Microsoft.Extensions.Http.dll": {}
         },
         "compileOnly": true
       },
@@ -2887,12 +2938,6 @@
         },
         "compileOnly": true
       },
-      "System.Text.Json/4.0.1.0": {
-        "compile": {
-          "System.Text.Json.dll": {}
-        },
-        "compileOnly": true
-      },
       "System.Text.RegularExpressions.Reference/4.2.2.0": {
         "compile": {
           "System.Text.RegularExpressions.dll": {}
@@ -3216,6 +3261,13 @@
       "path": "microsoft.extensions.dependencyinjection.abstractions/3.1.9",
       "hashPath": "microsoft.extensions.dependencyinjection.abstractions.3.1.9.nupkg.sha512"
     },
+    "Microsoft.Extensions.Http/3.1.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-yGaFZpLkIxXKp96eyCMieyrWzKKMr4SxOQi0Zo0RiaoiB3l/dOqqeYJ7RMD31djx61lnd7ocqV4j93WtUye/wA==",
+      "path": "microsoft.extensions.http/3.1.7",
+      "hashPath": "microsoft.extensions.http.3.1.7.nupkg.sha512"
+    },
     "Microsoft.Extensions.Logging/3.1.9": {
       "type": "package",
       "serviceable": true,
@@ -3327,6 +3379,20 @@
       "sha512": "sha512-QYFyxhaABwmq3p/21VrZNYvCg3DaEoN/wUuw5nmfAf0X3HLjgupwhkEWdgfb9nvGAUIv3osmZoD3kKl4jxEmYQ==",
       "path": "newtonsoft.json.bson/1.0.2",
       "hashPath": "newtonsoft.json.bson.1.0.2.nupkg.sha512"
+    },
+    "Refit/5.2.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-dgLXewaEZi7kexzfaYb7JZPGw93UMNAr7dF9r/S7HuKMjQcWieGnXolmSD2XMA0eCn8t4PLjnm8OwwkG+cGrPw==",
+      "path": "refit/5.2.1",
+      "hashPath": "refit.5.2.1.nupkg.sha512"
+    },
+    "Refit.HttpClientFactory/5.2.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cvLSYhAZEbOjpFcgz5RakxABS2t0B5K5gMqpj1LrVPZ2rOFzAS4WDgs6zjWXY/zj6prqbIhB5VmepKEprYdTbg==",
+      "path": "refit.httpclientfactory/5.2.1",
+      "hashPath": "refit.httpclientfactory.5.2.1.nupkg.sha512"
     },
     "runtime.native.System/4.3.0": {
       "type": "package",
@@ -3754,6 +3820,13 @@
       "sha512": "sha512-YVMK0Bt/A43RmwizJoZ22ei2nmrhobgeiYwFzC4YAN+nue8RF6djXDMog0UCn+brerQoYVyaS+ghy9P/MUVcmw==",
       "path": "system.text.encoding.extensions/4.3.0",
       "hashPath": "system.text.encoding.extensions.4.3.0.nupkg.sha512"
+    },
+    "System.Text.Json/4.7.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-TcMd95wcrubm9nHvJEQs70rC0H/8omiSGGpU4FQ/ZA1URIqD4pjmFJh2Mfv1yH1eHgJDWTi2hMDXwTET+zOOyg==",
+      "path": "system.text.json/4.7.2",
+      "hashPath": "system.text.json.4.7.2.nupkg.sha512"
     },
     "System.Text.RegularExpressions/4.3.0": {
       "type": "package",
@@ -4282,11 +4355,6 @@
       "sha512": ""
     },
     "Microsoft.Extensions.Hosting/3.1.0.0": {
-      "type": "referenceassembly",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Microsoft.Extensions.Http/3.1.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""
@@ -5007,11 +5075,6 @@
       "sha512": ""
     },
     "System.Text.Encodings.Web/4.0.5.0": {
-      "type": "referenceassembly",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "System.Text.Json/4.0.1.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""

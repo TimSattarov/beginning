@@ -65,7 +65,12 @@ C:\Users\Sattarik\Documents\GitHub\beginning\NetCoreServicesLesson\ImageService\
 C:\Users\Sattarik\Documents\GitHub\beginning\NetCoreServicesLesson\ImageService\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\Sattarik\Documents\GitHub\beginning\NetCoreServicesLesson\ImageService\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\Sattarik\Documents\GitHub\beginning\NetCoreServicesLesson\ImageService\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\Sattarik\Documents\GitHub\beginning\NetCoreServicesLesson\ImageService\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Newtonsoft.dll
+C:\Users\Sattarik\Documents\GitHub\beginning\NetCoreServicesLesson\ImageService\bin\Debug\netcoreapp3.1\Refit.dll
+C:\Users\Sattarik\Documents\GitHub\beginning\NetCoreServicesLesson\ImageService\bin\Debug\netcoreapp3.1\System.Text.Json.dll
+C:\Users\Sattarik\Documents\GitHub\beginning\NetCoreServicesLesson\ImageService\obj\Debug\netcoreapp3.1\RefitStubs.g.cs
+C:\Users\Sattarik\Documents\GitHub\beginning\NetCoreServicesLesson\ImageService\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Http.dll
+C:\Users\Sattarik\Documents\GitHub\beginning\NetCoreServicesLesson\ImageService\bin\Debug\netcoreapp3.1\Refit.HttpClientFactory.dll
 C:\Users\Sattarik\Documents\GitHub\beginning\NetCoreServicesLesson\ImageService\obj\Debug\netcoreapp3.1\ImageService.csproj.CoreCompileInputs.cache
 C:\Users\Sattarik\Documents\GitHub\beginning\NetCoreServicesLesson\ImageService\obj\Debug\netcoreapp3.1\ImageService.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Sattarik\Documents\GitHub\beginning\NetCoreServicesLesson\ImageService\obj\Debug\netcoreapp3.1\ImageService.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Sattarik\Documents\GitHub\beginning\NetCoreServicesLesson\ImageService\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Newtonsoft.dll

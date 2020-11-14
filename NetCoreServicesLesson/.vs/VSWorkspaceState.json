@@ -1,12 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\ImageService\\Controllers",
-    "\\ImageService\\Services",
-    "\\PriceService\\Controllers",
-    "\\PriceService\\Repositories",
-    "\\ProductService\\bin"
+    "\\ProductService",
+    "\\ProductService\\Controllers"
   ],
-  "SelectedNode": "\\ProductService",
   "PreviewInSolutionExplorer": false
 }
