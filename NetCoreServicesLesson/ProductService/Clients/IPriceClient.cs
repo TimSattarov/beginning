@@ -9,5 +9,8 @@ namespace ProductService.Clients
     {
         [Get("/api/price")]
         Task<IEnumerable<PriceModel>> GetAll();
+
+        [Post("/api/price")]
+        Task CreateMany(IEnumerable<PriceModel> images);
     }
 }

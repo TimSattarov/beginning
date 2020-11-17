@@ -2,44 +2,30 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ImageService.Clients;
 using ImageService.Entities;
-using ImageService.Models;
 using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
 
 namespace ImageService.Services
 {
     public class ImageService : IImageService
     {
         private readonly ImageContext _imageContext;
-        private readonly IPoligonClient _poligonClient;
 
-        public ImageService(ImageContext imageContet, IPoligonClient poligonClient)
+        public ImageService(ImageContext imageContet)
         {
-            _imageContext = imageContet;
-            _poligonClient = poligonClient;
+            _imageContext = imageContet;            
         }
-
-
-
-        public async Task<PoligonModel> GetAllPoligon()
-        {
-            return await _poligonClient.GetAll();
-        }
-
-
 
 
 
         public async Task<Image> Get(Guid id)
         {
-            return await _imageContext.Images.FirstOrDefaultAsync(i => i.Id == id && i.IsDeleted == false);
+            return await _imageContext.Image.FirstOrDefaultAsync(i => i.Id == id && i.IsDeleted == false);
         }
 
         public async Task<IEnumerable<Image>> GetAll()
         {
-            return await _imageContext.Images.Where(i => i.IsDeleted == false).ToListAsync();
+            return await _imageContext.Image.Where(i => i.IsDeleted == false).ToListAsync();
         }
 
 
@@ -57,7 +43,7 @@ namespace ImageService.Services
             entity.CreatedBy = Guid.NewGuid();        //Заглушка
             entity.LastSavedBy = Guid.NewGuid();      //Заглушка
 
-            await _imageContext.Images.AddAsync(entity);
+            await _imageContext.Image.AddAsync(entity);
             await _imageContext.SaveChangesAsync();
         }
 
@@ -77,7 +63,7 @@ namespace ImageService.Services
                 entity.LastSavedBy = Guid.NewGuid();      //Заглушка
             }
 
-            await _imageContext.Images.AddRangeAsync(entities);
+            await _imageContext.Image.AddRangeAsync(entities);
             await _imageContext.SaveChangesAsync();
         }
 
@@ -88,7 +74,7 @@ namespace ImageService.Services
             entity.LastSavedDate = DateTime.UtcNow;
             entity.LastSavedBy = Guid.NewGuid();   //Заглушка
 
-            _imageContext.Images.Update(entity);
+            _imageContext.Image.Update(entity);
             await _imageContext.SaveChangesAsync();
         }
 
@@ -100,7 +86,7 @@ namespace ImageService.Services
                 entity.LastSavedBy = Guid.NewGuid();      //Заглушка
             }
 
-            _imageContext.Images.UpdateRange(entities);
+            _imageContext.Image.UpdateRange(entities);
             await _imageContext.SaveChangesAsync();
         }
 
@@ -108,7 +94,7 @@ namespace ImageService.Services
 
         public async Task Delete(Guid id)
         {
-            var entity = await _imageContext.Images.FirstOrDefaultAsync(i => i.Id == id);
+            var entity = await _imageContext.Image.FirstOrDefaultAsync(i => i.Id == id);
 
             if (entity != null)
             {
@@ -116,14 +102,14 @@ namespace ImageService.Services
                 entity.LastSavedBy = Guid.NewGuid();   //Заглушка
                 entity.IsDeleted = true;
 
-                _imageContext.Images.Update(entity);
+                _imageContext.Image.Update(entity);
                 await _imageContext.SaveChangesAsync();
             }
         }
 
         public async Task DeleteMany(IEnumerable<Guid> entityIds)
         {
-            var entities = _imageContext.Images.Where(i => entityIds.Contains(i.Id));
+            var entities = _imageContext.Image.Where(i => entityIds.Contains(i.Id));
 
             if (entities != null)
             {
@@ -133,7 +119,7 @@ namespace ImageService.Services
                     entity.LastSavedBy = Guid.NewGuid();   //Заглушка
                     entity.IsDeleted = true;
                 }
-                _imageContext.Images.UpdateRange(entities);
+                _imageContext.Image.UpdateRange(entities);
                 await _imageContext.SaveChangesAsync();
             }
         }
@@ -142,7 +128,7 @@ namespace ImageService.Services
 
         public async Task Restore(Guid id)
         {
-            var entity = await _imageContext.Images.FirstOrDefaultAsync(i => i.Id == id);
+            var entity = await _imageContext.Image.FirstOrDefaultAsync(i => i.Id == id);
 
             if (entity != null)
             {
@@ -150,14 +136,14 @@ namespace ImageService.Services
                 entity.LastSavedBy = Guid.NewGuid();   //Заглушка
                 entity.IsDeleted = false;
 
-                _imageContext.Images.Update(entity);
+                _imageContext.Image.Update(entity);
                 await _imageContext.SaveChangesAsync();
             }
         }
 
         public async Task RestoreMany(IEnumerable<Guid> entityIds)
         {
-            var entities = _imageContext.Images.Where(i => entityIds.Contains(i.Id));
+            var entities = _imageContext.Image.Where(i => entityIds.Contains(i.Id));
 
             if (entities != null)
             {
@@ -167,7 +153,7 @@ namespace ImageService.Services
                     entity.LastSavedBy = Guid.NewGuid();   //Заглушка
                     entity.IsDeleted = false;
                 }
-                _imageContext.Images.UpdateRange(entities);
+                _imageContext.Image.UpdateRange(entities);
                 await _imageContext.SaveChangesAsync();
             }
         }

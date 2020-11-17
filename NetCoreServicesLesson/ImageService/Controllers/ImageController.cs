@@ -88,5 +88,19 @@ namespace ImageService.Controllers
         {
             await _imageService.DeleteMany(entityIds);
         }
+
+
+
+        [HttpPut("/api/Image/restore/{id}")]
+        public async Task Restore(Guid id)
+        {
+            await _imageService.Restore(id);
+        }
+
+        [HttpPut("/api/Image/restore")]
+        public async Task RestoreMany(IEnumerable<Guid> entityIds)
+        {
+            await _imageService.RestoreMany(entityIds);
+        }
     }
 }

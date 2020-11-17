@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
-      "AutoMapper/10.1.1": {
+      "AutoMapper/10.1.0": {
         "type": "package",
         "dependencies": {
           "Microsoft.CSharp": "4.7.0",
@@ -584,7 +584,7 @@
           "lib/netcoreapp3.0/System.Text.Json.dll": {}
         }
       },
-      "repository/1.0.0": {
+      "Repository/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
@@ -594,23 +594,23 @@
           "system.data.sqlclient": "4.8.2"
         },
         "compile": {
-          "bin/placeholder/repository.dll": {}
+          "bin/placeholder/Repository.dll": {}
         },
         "runtime": {
-          "bin/placeholder/repository.dll": {}
+          "bin/placeholder/Repository.dll": {}
         }
       }
     }
   },
   "libraries": {
-    "AutoMapper/10.1.1": {
-      "sha512": "uMgbqOdu9ZG5cIOty0C85hzzayBH2i9BthnS5FlMqKtMSHDv4ts81a2jS1VFaDBVhlBeIqJ/kQKjQY95BZde9w==",
+    "AutoMapper/10.1.0": {
+      "sha512": "qxn9+PpQJD53PAUHGXW3HTcq6Rxbv3Pyq/jTcc60ZYwOygyqUfHIY3HBChKbDwtTHdlwlQqJeJ1ckVcaoytxxw==",
       "type": "package",
-      "path": "automapper/10.1.1",
+      "path": "automapper/10.1.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "automapper.10.1.1.nupkg.sha512",
+        "automapper.10.1.0.nupkg.sha512",
         "automapper.nuspec",
         "icon.png",
         "lib/net461/AutoMapper.dll",
@@ -1869,15 +1869,14 @@
         "version.txt"
       ]
     },
-    "repository/1.0.0": {
+    "Repository/1.0.0": {
       "type": "project",
-      "path": "../repository/repository.csproj",
-      "msbuildProject": "../repository/repository.csproj"
+      "path": "../Repository/Repository.csproj",
+      "msbuildProject": "../Repository/Repository.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "AutoMapper >= 10.1.1",
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 8.1.0",
       "Microsoft.AspNetCore.Http >= 2.2.2",
       "Microsoft.AspNetCore.Mvc.NewtonsoftJson >= 3.1.9",
@@ -1885,25 +1884,25 @@
       "Newtonsoft.Json >= 12.0.3",
       "Refit >= 5.2.1",
       "Refit.Httpclientfactory >= 5.2.1",
+      "Repository >= 1.0.0",
       "Swashbuckle.AspNetCore >= 5.6.3",
-      "Swashbuckle.AspNetCore.Newtonsoft >= 5.6.3",
-      "repository >= 1.0.0"
+      "Swashbuckle.AspNetCore.Newtonsoft >= 5.6.3"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Sattarik\\.nuget\\packages\\": {}
+    "C:\\Users\\SattarovTR\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Sattarik\\Documents\\GitHub\\beginning\\NetCoreServicesLesson\\PriceService\\PriceService.csproj",
+      "projectUniqueName": "C:\\Users\\SattarovTR\\Documents\\GitHub\\beginning\\NetCoreServicesLesson\\PriceService\\PriceService.csproj",
       "projectName": "PriceService",
-      "projectPath": "C:\\Users\\Sattarik\\Documents\\GitHub\\beginning\\NetCoreServicesLesson\\PriceService\\PriceService.csproj",
-      "packagesPath": "C:\\Users\\Sattarik\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Sattarik\\Documents\\GitHub\\beginning\\NetCoreServicesLesson\\PriceService\\obj\\",
+      "projectPath": "C:\\Users\\SattarovTR\\Documents\\GitHub\\beginning\\NetCoreServicesLesson\\PriceService\\PriceService.csproj",
+      "packagesPath": "C:\\Users\\SattarovTR\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\SattarovTR\\Documents\\GitHub\\beginning\\NetCoreServicesLesson\\PriceService\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Sattarik\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\SattarovTR\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1915,9 +1914,10 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\Sattarik\\Documents\\GitHub\\beginning\\NetCoreServicesLesson\\repository\\repository.csproj": {
-              "projectPath": "C:\\Users\\Sattarik\\Documents\\GitHub\\beginning\\NetCoreServicesLesson\\repository\\repository.csproj"
+            "C:\\Users\\SattarovTR\\Documents\\GitHub\\beginning\\NetCoreServicesLesson\\Repository\\Repository.csproj": {
+              "projectPath": "C:\\Users\\SattarovTR\\Documents\\GitHub\\beginning\\NetCoreServicesLesson\\Repository\\Repository.csproj"
             }
           }
         }
@@ -1930,11 +1930,8 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "dependencies": {
-          "AutoMapper": {
-            "target": "Package",
-            "version": "[10.1.1, )"
-          },
           "AutoMapper.Extensions.Microsoft.DependencyInjection": {
             "target": "Package",
             "version": "[8.1.0, )"
@@ -1990,7 +1987,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

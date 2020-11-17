@@ -1,8 +1,14 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using ProductService.Clients;
+using ProductService.Entity;
+using ProductService.Interfaces;
 using ProductService.Models;
-using ProductService.Services;
 
 namespace ProductService.Controllers
 {
@@ -11,36 +17,83 @@ namespace ProductService.Controllers
     public class ProductController : ControllerBase
     {
         private readonly IProductService _productService;
+        private readonly ILogger<ProductController> _logger;
 
-        public ProductController(IProductService productService)
+        public ProductController(IProductService productService, ILogger<ProductController> logger)
         {
-            _productService = productService;        
+            _productService = productService;
+            _logger = logger;
+        }
+
+
+
+        [HttpGet("{id}")]
+        public async Task<ProductModel> Get(Guid id)
+        {
+            return await _productService.Get(id);
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<ProductModel>> GetAll()
-        {
-            var collection = _productService.GetAll();
-
-            if (collection == null)
-            {
-                return BadRequest("Products not found");
-            }
-
-            return Ok(collection);
+        public async Task<IEnumerable<ProductModel>> GetAll()
+        {            
+            return await _productService.GetAll();
         }
 
-        [HttpGet("{id}")]
-        public ActionResult<ProductModel> Get(Guid id)
+
+
+        [HttpPost("{id}")]
+        public async Task Create(ProductModel product)
         {
-            var model = _productService.Get(id);
+            await _productService.Create(product);            
+        }
 
-            if (model == null)
-            {
-                return BadRequest("Product not found");
-            }
+        [HttpPost]
+        public async Task CreateMany(IEnumerable<ProductModel> products)
+        {
+            await _productService.CreateMany(products);
+        }
 
-            return Ok(model);
+
+
+
+        [HttpPut("{id}")]
+        public async Task Update(ProductModel product)
+        {
+            await _productService.Update(product);
+        }
+
+        [HttpPut]
+        public async Task UpdateMany(IEnumerable<ProductModel> products)
+        {            
+            await _productService.UpdateMany(products);
+        }
+
+
+
+        [HttpDelete("{id}")]
+        public async Task Delete(Guid id)
+        {
+            await _productService.Delete(id);
+        }
+
+        [HttpDelete]
+        public async Task DeleteMany(IEnumerable<Guid> entityIds)
+        {
+            await _productService.DeleteMany(entityIds);
+        }
+
+
+
+        [HttpPut("/api/Product/restore/{id}")]
+        public async Task Restore(Guid id)
+        {
+            await _productService.Restore(id);
+        }
+
+        [HttpPut("/api/Product/restore")]
+        public async Task RestoreMany(IEnumerable<Guid> entityIds)
+        {
+            await _productService.RestoreMany(entityIds);
         }
     }
 }

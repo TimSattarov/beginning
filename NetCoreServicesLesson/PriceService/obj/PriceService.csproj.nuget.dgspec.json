@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Sattarik\\Documents\\GitHub\\beginning\\NetCoreServicesLesson\\PriceService\\PriceService.csproj": {}
+    "C:\\Users\\SattarovTR\\Documents\\GitHub\\beginning\\NetCoreServicesLesson\\PriceService\\PriceService.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Sattarik\\Documents\\GitHub\\beginning\\NetCoreServicesLesson\\PriceService\\PriceService.csproj": {
+    "C:\\Users\\SattarovTR\\Documents\\GitHub\\beginning\\NetCoreServicesLesson\\PriceService\\PriceService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Sattarik\\Documents\\GitHub\\beginning\\NetCoreServicesLesson\\PriceService\\PriceService.csproj",
+        "projectUniqueName": "C:\\Users\\SattarovTR\\Documents\\GitHub\\beginning\\NetCoreServicesLesson\\PriceService\\PriceService.csproj",
         "projectName": "PriceService",
-        "projectPath": "C:\\Users\\Sattarik\\Documents\\GitHub\\beginning\\NetCoreServicesLesson\\PriceService\\PriceService.csproj",
-        "packagesPath": "C:\\Users\\Sattarik\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Sattarik\\Documents\\GitHub\\beginning\\NetCoreServicesLesson\\PriceService\\obj\\",
+        "projectPath": "C:\\Users\\SattarovTR\\Documents\\GitHub\\beginning\\NetCoreServicesLesson\\PriceService\\PriceService.csproj",
+        "packagesPath": "C:\\Users\\SattarovTR\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\SattarovTR\\Documents\\GitHub\\beginning\\NetCoreServicesLesson\\PriceService\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Sattarik\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\SattarovTR\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,9 +26,10 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\Sattarik\\Documents\\GitHub\\beginning\\NetCoreServicesLesson\\repository\\repository.csproj": {
-                "projectPath": "C:\\Users\\Sattarik\\Documents\\GitHub\\beginning\\NetCoreServicesLesson\\repository\\repository.csproj"
+              "C:\\Users\\SattarovTR\\Documents\\GitHub\\beginning\\NetCoreServicesLesson\\Repository\\Repository.csproj": {
+                "projectPath": "C:\\Users\\SattarovTR\\Documents\\GitHub\\beginning\\NetCoreServicesLesson\\Repository\\Repository.csproj"
               }
             }
           }
@@ -41,11 +42,8 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
-            "AutoMapper": {
-              "target": "Package",
-              "version": "[10.1.1, )"
-            },
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
               "version": "[8.1.0, )"
@@ -101,21 +99,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Sattarik\\Documents\\GitHub\\beginning\\NetCoreServicesLesson\\repository\\repository.csproj": {
+    "C:\\Users\\SattarovTR\\Documents\\GitHub\\beginning\\NetCoreServicesLesson\\Repository\\Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Sattarik\\Documents\\GitHub\\beginning\\NetCoreServicesLesson\\repository\\repository.csproj",
-        "projectName": "repository",
-        "projectPath": "C:\\Users\\Sattarik\\Documents\\GitHub\\beginning\\NetCoreServicesLesson\\repository\\repository.csproj",
-        "packagesPath": "C:\\Users\\Sattarik\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Sattarik\\Documents\\GitHub\\beginning\\NetCoreServicesLesson\\repository\\obj\\",
+        "projectUniqueName": "C:\\Users\\SattarovTR\\Documents\\GitHub\\beginning\\NetCoreServicesLesson\\Repository\\Repository.csproj",
+        "projectName": "Repository",
+        "projectPath": "C:\\Users\\SattarovTR\\Documents\\GitHub\\beginning\\NetCoreServicesLesson\\Repository\\Repository.csproj",
+        "packagesPath": "C:\\Users\\SattarovTR\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\SattarovTR\\Documents\\GitHub\\beginning\\NetCoreServicesLesson\\Repository\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Sattarik\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\SattarovTR\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -127,6 +125,7 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -138,6 +137,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "Dapper": {
               "target": "Package",
@@ -171,7 +171,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

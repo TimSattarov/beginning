@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace repository
+namespace Repository
 {
     public interface IBaseRepository<T>
     {

@@ -1,5 +1,5 @@
 using Microsoft.Extensions.Options;
-using repository;
+using Repository;
 using Dapper;
 using System.Threading.Tasks;
 using System.Collections.Generic;

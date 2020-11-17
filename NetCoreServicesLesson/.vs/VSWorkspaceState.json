@@ -2,7 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\ProductService",
-    "\\ProductService\\Controllers"
+    "\\ProductService\\Clients",
+    "\\ProductService\\Controllers",
+    "\\ProductService\\Services"
   ],
+  "SelectedNode": "\\ProductService\\Services\\ProductService.cs",
   "PreviewInSolutionExplorer": false
 }

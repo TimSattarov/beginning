@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v3.1": {
-      "repository/1.0.0": {
+      "Repository/1.0.0": {
         "dependencies": {
           "Dapper": "2.0.35",
           "Microsoft.AspNetCore.Http": "2.2.2",
@@ -14,7 +14,7 @@
           "System.Data.SqlClient": "4.8.2"
         },
         "runtime": {
-          "repository.dll": {}
+          "Repository.dll": {}
         }
       },
       "Dapper/2.0.35": {
@@ -207,7 +207,7 @@
     }
   },
   "libraries": {
-    "repository/1.0.0": {
+    "Repository/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

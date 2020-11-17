@@ -4,7 +4,6 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using AutoMapper;
-using ImageService.Clients;
 using ImageService.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -44,7 +43,6 @@ namespace ImageService
 
             var refitSettings = new RefitSettings()
             {
-                AuthorizationHeaderValueGetter = () => Task.FromResult("AgAAAAABJH9pAADLWx-nRbc1nEn5mAXMBgpbSOw"),
                 ContentSerializer = new NewtonsoftJsonContentSerializer(new JsonSerializerSettings
                 {
                     DefaultValueHandling = DefaultValueHandling.Ignore,
@@ -52,12 +50,6 @@ namespace ImageService
                     ContractResolver = new CamelCasePropertyNamesContractResolver()
                 })
             };
-
-            services.TryAddTransient(_ => RestService.For<IPoligonClient>(new HttpClient()
-            {
-                BaseAddress = new Uri("https://cloud-api.yandex.net/v1/disk")
-            }, refitSettings));
-
 
             services.AddTransient<IImageService, ImageService.Services.ImageService>();
             services.AddSwaggerGenNewtonsoftSupport();

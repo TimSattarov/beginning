@@ -1,9 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ProductService.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using ProductService.Entity;
 
 namespace ProductService
 {
@@ -11,7 +7,7 @@ namespace ProductService
     {
         public DbSet<ProductDbModel> Product { get; set; }
 
-        public ProductContext(DbContextOptions options) : base(options)
+        public ProductContext(DbContextOptions<ProductContext> options) : base(options)
         {
             Database.EnsureCreated();
         }

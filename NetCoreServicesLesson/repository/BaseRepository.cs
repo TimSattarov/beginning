@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Dapper;
 using Microsoft.Extensions.Options;
 
-namespace repository 
+namespace Repository 
 {
 	public class BaseRepository<T> : IBaseRepository<T>
 		where T : BaseEntity

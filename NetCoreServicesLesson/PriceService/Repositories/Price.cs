@@ -1,5 +1,5 @@
 using System;
-using repository;
+using Repository;
 
 namespace PriceService.Repositories
 {

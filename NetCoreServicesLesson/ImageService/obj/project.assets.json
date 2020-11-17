@@ -5946,19 +5946,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Sattarik\\.nuget\\packages\\": {}
+    "C:\\Users\\SattarovTR\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Sattarik\\Documents\\GitHub\\beginning\\NetCoreServicesLesson\\ImageService\\ImageService.csproj",
+      "projectUniqueName": "C:\\Users\\SattarovTR\\Documents\\GitHub\\beginning\\NetCoreServicesLesson\\ImageService\\ImageService.csproj",
       "projectName": "ImageService",
-      "projectPath": "C:\\Users\\Sattarik\\Documents\\GitHub\\beginning\\NetCoreServicesLesson\\ImageService\\ImageService.csproj",
-      "packagesPath": "C:\\Users\\Sattarik\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Sattarik\\Documents\\GitHub\\beginning\\NetCoreServicesLesson\\ImageService\\obj\\",
+      "projectPath": "C:\\Users\\SattarovTR\\Documents\\GitHub\\beginning\\NetCoreServicesLesson\\ImageService\\ImageService.csproj",
+      "packagesPath": "C:\\Users\\SattarovTR\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\SattarovTR\\Documents\\GitHub\\beginning\\NetCoreServicesLesson\\ImageService\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Sattarik\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\SattarovTR\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5970,6 +5970,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -5981,6 +5982,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "AutoMapper": {
             "target": "Package",
@@ -6045,7 +6047,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

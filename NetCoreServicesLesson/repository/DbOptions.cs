@@ -1,4 +1,4 @@
-namespace repository
+namespace Repository
 {
     public class DbOptions
     {

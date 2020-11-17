@@ -5,7 +5,7 @@ namespace ImageService
 {
     public class ImageContext : DbContext
     {
-        public DbSet<Image> Images {get; set;}
+        public DbSet<Image> Image {get; set;}
         
         public ImageContext(DbContextOptions<ImageContext> options) : base (options)
         {

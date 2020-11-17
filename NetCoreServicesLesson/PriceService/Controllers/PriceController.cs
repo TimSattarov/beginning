@@ -85,5 +85,19 @@ namespace PriceService.Controllers
         {
             await _priceRepository.Delete(id);
         }
+
+
+
+        [HttpPut("/api/Price/restore/{id}")]
+        public async Task Restore(Guid id)
+        {
+            await _priceRepository.Restore(id);
+        }
+
+        [HttpPut("/api/Price/restore")]
+        public async Task RestoreMany(IEnumerable<Guid> entityIds)
+        {
+            await _priceRepository.RestoreMany(entityIds);
+        }
     }
 }
