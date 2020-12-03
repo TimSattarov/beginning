@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
@@ -18,21 +19,19 @@ namespace ProductService.Services
         private readonly IMapper _mapper;
         private readonly IImageClient _imageClient;
         private readonly IPriceClient _priceClient;
-        private readonly IYaDiskService _yaDiskService;
+        
 
 
         public ProductService(
             ProductContext productContext, 
             IMapper mapper, 
             IImageClient imageClient, 
-            IPriceClient priceClient,
-            IYaDiskService yaDiskService)
+            IPriceClient priceClient)
         {
             _productContext = productContext;
             _mapper = mapper;         
             _priceClient = priceClient; 
             _imageClient = imageClient;
-            _yaDiskService = yaDiskService;
         }
 
 
@@ -71,15 +70,11 @@ namespace ProductService.Services
 
         public async Task Create(ProductModel product)
         {
-
             if (product.Id == Guid.Empty)
             {
                 product.Id = Guid.NewGuid();
                 foreach (var itemImage in product.Images)
                 {
-                    await _yaDiskService.PostImage(itemImage.Path);
-                    itemImage.Url = await _yaDiskService.GetUrl(itemImage.Path);
-
                     itemImage.ProductId = product.Id;
                 }
                 foreach (var itemPrice in product.Prices)
@@ -112,11 +107,9 @@ namespace ProductService.Services
                     itemProduct.Id = Guid.NewGuid();
                     foreach (var itemImage in itemProduct.Images)
                     {
-                        string pathOnYaDisk = await _yaDiskService.PostImage(itemImage.Path);
-                        itemImage.Url = await _yaDiskService.GetUrl(pathOnYaDisk);
-
                         itemImage.ProductId = itemProduct.Id;
                     }
+
                     foreach (var itemPrice in itemProduct.Prices)
                     {
                         itemPrice.ProductId = itemProduct.Id;

@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using ImageService.Entities;
+using ImageService.Interfaces;
 using ImageService.Models;
 using ImageService.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -16,12 +18,10 @@ namespace ImageService.Controllers
     {
         private readonly IImageService _imageService;
         private readonly ILogger<ImageController> _logger;
-        private readonly IMapper _mapper;
 
-        public ImageController(IImageService imageService, ILogger<ImageController> logger, IMapper mapper)
+        public ImageController(IImageService imageService, ILogger<ImageController> logger)
         {
             _imageService = imageService;
-            _mapper = mapper;
             _logger = logger;
         }
 
@@ -30,59 +30,57 @@ namespace ImageService.Controllers
         [HttpGet("{id}")]
         public async Task<ImageModel> Get(Guid id)
         {
-            var imageEntity = await _imageService.Get(id);
-            var image = _mapper.Map<ImageModel>(imageEntity);
-            return image;
+            return await _imageService.Get(id);
         }
 
         [HttpGet]
         public async Task<IEnumerable<ImageModel>> GetAll()
         {
-            var imageEntities = await _imageService.GetAll();
-            var images = _mapper.Map<IEnumerable<ImageModel>>(imageEntities);
-            return images;
+            return await _imageService.GetAll();
         }
 
 
 
+        [Authorize]
         [HttpPost("{id}")]
         public async Task Create(ImageModel image)
         {
-            var imageEntity = _mapper.Map<Image>(image);
-            await _imageService.Create(imageEntity);
+            await _imageService.Create(image);
         }
 
+        [Authorize]
         [HttpPost]
         public async Task CreateMany(IEnumerable<ImageModel> images)
         {
-            var imageEntities = _mapper.Map<IEnumerable<Image>>(images);
-            await _imageService.CreateMany(imageEntities);
+            await _imageService.CreateMany(images);
         }
 
 
 
+        [Authorize]
         [HttpPut("{id}")]
         public async Task Update(ImageModel image)
         {
-            var imageEntity = _mapper.Map<Image>(image);
-            await _imageService.Update(imageEntity);
+            await _imageService.Update(image);
         }
 
+        [Authorize]
         [HttpPut]
         public async Task UpdateMany(IEnumerable<ImageModel> images)
         {
-            var imageEntities = _mapper.Map<IEnumerable<Image>>(images);
-            await _imageService.UpdateMany(imageEntities);
+            await _imageService.UpdateMany(images);
         }
 
 
 
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task Delete(Guid id)
         {
             await _imageService.Delete(id);
         }
 
+        [Authorize]
         [HttpDelete]
         public async Task DeleteMany(IEnumerable<Guid> entityIds)
         {
@@ -91,12 +89,14 @@ namespace ImageService.Controllers
 
 
 
+        [Authorize]
         [HttpPut("/api/Image/restore/{id}")]
         public async Task Restore(Guid id)
         {
             await _imageService.Restore(id);
         }
 
+        [Authorize]
         [HttpPut("/api/Image/restore")]
         public async Task RestoreMany(IEnumerable<Guid> entityIds)
         {

@@ -1,0 +1,72 @@
+services:
+  authenticationservice:
+    build:
+      context: C:\Users\SattarovTR\Documents\GitHub\beginning\AspNetCoreServices
+      dockerfile: AuthenticationService/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_Kestrel__Certificates__Default__Password: crypticpassword
+      ASPNETCORE_Kestrel__Certificates__Default__Path: /https/authenticationservice.pfx
+      ASPNETCORE_URLS: https://+:443;http://+:80
+    image: authenticationservice
+    ports:
+    - published: 5007
+      target: 443
+    - published: 5006
+      target: 80
+    volumes:
+    - C:\Users\SattarovTR\.aspnet\https:/https:ro
+  imageservice:
+    build:
+      context: C:\Users\SattarovTR\Documents\GitHub\beginning\AspNetCoreServices
+      dockerfile: ImageService/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_Kestrel__Certificates__Default__Password: crypticpassword
+      ASPNETCORE_Kestrel__Certificates__Default__Path: /https/imageservice.pfx
+      ASPNETCORE_URLS: https://+:443;http://+:80
+    image: imageservice
+    ports:
+    - published: 5005
+      target: 443
+    - published: 5004
+      target: 80
+    volumes:
+    - C:\Users\SattarovTR\.aspnet\https:/https:ro
+  priceservice:
+    build:
+      context: C:\Users\SattarovTR\Documents\GitHub\beginning\AspNetCoreServices
+      dockerfile: PriceService/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_Kestrel__Certificates__Default__Password: crypticpassword
+      ASPNETCORE_Kestrel__Certificates__Default__Path: /https/priceservice.pfx
+      ASPNETCORE_URLS: https://+:443;http://+:80
+    image: priceservice
+    ports:
+    - published: 5003
+      target: 443
+    - published: 5002
+      target: 80
+    volumes:
+    - C:\Users\SattarovTR\.aspnet\https:/https:ro
+  productservice:
+    build:
+      context: C:\Users\SattarovTR\Documents\GitHub\beginning\AspNetCoreServices
+      dockerfile: ProductService/Dockerfile
+    environment:
+      API:ImageClientBaseAddress: https://host.docker.internal:5005
+      API:PriceClientBaseAddress: https://host.docker.internal:5003
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_Kestrel__Certificates__Default__Password: crypticpassword
+      ASPNETCORE_Kestrel__Certificates__Default__Path: /https/productservice.pfx
+      ASPNETCORE_URLS: https://+:443;http://+:80
+    image: productservice
+    ports:
+    - published: 5001
+      target: 443
+    - published: 5000
+      target: 80
+    volumes:
+    - C:\Users\SattarovTR\.aspnet\https:/https:ro
+version: '3.4'

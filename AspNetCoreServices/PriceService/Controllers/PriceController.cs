@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -42,8 +44,10 @@ namespace PriceService.Controllers
             var price = _mapper.Map<PriceModel>(priceDbModel);
             return price;
         }
-        
 
+
+
+        [Authorize]
         [HttpPost]
         public async Task CreateMany(IEnumerable<PriceModel> prices)
         {
@@ -58,7 +62,7 @@ namespace PriceService.Controllers
             await _priceRepository.Create(priceDbModel);
         }
 
-
+        [Authorize]
         [HttpPut]
         public async Task UpdateMany(IEnumerable<PriceModel> prices)
         {
@@ -74,12 +78,15 @@ namespace PriceService.Controllers
         }
 
 
+
+        [Authorize]
         [HttpDelete]
         public async Task DeleteMany(IEnumerable<Guid> entityIds)
         {
             await _priceRepository.DeleteMany(entityIds);
         }
 
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task Delete(Guid id)
         {
@@ -88,12 +95,14 @@ namespace PriceService.Controllers
 
 
 
+        [Authorize]
         [HttpPut("/api/Price/restore/{id}")]
         public async Task Restore(Guid id)
         {
             await _priceRepository.Restore(id);
         }
 
+        [Authorize]
         [HttpPut("/api/Price/restore")]
         public async Task RestoreMany(IEnumerable<Guid> entityIds)
         {

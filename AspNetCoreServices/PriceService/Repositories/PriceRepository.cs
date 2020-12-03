@@ -3,6 +3,7 @@ using Repository;
 using Dapper;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace PriceService.Repositories
 {

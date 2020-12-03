@@ -3,11 +3,8 @@ using PriceService.Repositories;
 
 namespace PriceService.Models
 {
-    public class PriceModel : Price
+    public class PriceModel
     {
-        public PriceModel() : base()
-        {
-        }
         public Guid Id { get; set; }
         public float CurrentPrice { get; set; }
         public float SalePrice { get; set; }

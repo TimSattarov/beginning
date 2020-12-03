@@ -1,0 +1,13 @@
+C:\Users\SattarovTR\Documents\GitHub\beginning\AspNetCoreServices\AuthenticationBase\obj\Debug\net5.0\AuthenticationBase.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\SattarovTR\Documents\GitHub\beginning\AspNetCoreServices\AuthenticationBase\obj\Debug\net5.0\RefitStubs.g.cs
+C:\Users\SattarovTR\Documents\GitHub\beginning\AspNetCoreServices\AuthenticationBase\obj\Debug\net5.0\AuthenticationBase.AssemblyInfoInputs.cache
+C:\Users\SattarovTR\Documents\GitHub\beginning\AspNetCoreServices\AuthenticationBase\obj\Debug\net5.0\AuthenticationBase.AssemblyInfo.cs
+C:\Users\SattarovTR\Documents\GitHub\beginning\AspNetCoreServices\AuthenticationBase\obj\Debug\net5.0\AuthenticationBase.csproj.CoreCompileInputs.cache
+C:\Users\SattarovTR\Documents\GitHub\beginning\AspNetCoreServices\AuthenticationBase\bin\Debug\net5.0\AuthenticationBase.deps.json
+C:\Users\SattarovTR\Documents\GitHub\beginning\AspNetCoreServices\AuthenticationBase\bin\Debug\net5.0\AuthenticationBase.dll
+C:\Users\SattarovTR\Documents\GitHub\beginning\AspNetCoreServices\AuthenticationBase\bin\Debug\net5.0\ref\AuthenticationBase.dll
+C:\Users\SattarovTR\Documents\GitHub\beginning\AspNetCoreServices\AuthenticationBase\bin\Debug\net5.0\AuthenticationBase.pdb
+C:\Users\SattarovTR\Documents\GitHub\beginning\AspNetCoreServices\AuthenticationBase\obj\Debug\net5.0\AuthenticationBase.dll
+C:\Users\SattarovTR\Documents\GitHub\beginning\AspNetCoreServices\AuthenticationBase\obj\Debug\net5.0\ref\AuthenticationBase.dll
+C:\Users\SattarovTR\Documents\GitHub\beginning\AspNetCoreServices\AuthenticationBase\obj\Debug\net5.0\AuthenticationBase.pdb
+C:\Users\SattarovTR\Documents\GitHub\beginning\AspNetCoreServices\AuthenticationBase\obj\Debug\net5.0\AuthenticationBase.csprojAssemblyReference.cache

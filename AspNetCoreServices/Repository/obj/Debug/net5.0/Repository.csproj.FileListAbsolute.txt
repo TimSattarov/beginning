@@ -9,3 +9,4 @@ C:\Users\SattarovTR\Documents\GitHub\beginning\AspNetCoreServices\Repository\obj
 C:\Users\SattarovTR\Documents\GitHub\beginning\AspNetCoreServices\Repository\obj\Debug\net5.0\Repository.dll
 C:\Users\SattarovTR\Documents\GitHub\beginning\AspNetCoreServices\Repository\obj\Debug\net5.0\ref\Repository.dll
 C:\Users\SattarovTR\Documents\GitHub\beginning\AspNetCoreServices\Repository\obj\Debug\net5.0\Repository.pdb
+C:\Users\SattarovTR\Documents\GitHub\beginning\AspNetCoreServices\Repository\obj\Debug\net5.0\Repository.csprojAssemblyReference.cache

@@ -1,0 +1,113 @@
+version: '3.4'
+
+services:
+  authenticationservice:
+    image: authenticationservice:dev
+    container_name: AuthenticationService
+    build:
+      target: base
+      labels:
+        com.microsoft.created-by: "visual-studio"
+        com.microsoft.visual-studio.project-name: "AuthenticationService"
+    environment:
+      - DOTNET_USE_POLLING_FILE_WATCHER=1
+      - ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true
+      #- NUGET_FALLBACK_PACKAGES=$container_paths_to_fallback_packages_authenticationservice$
+    volumes:
+      - C:\Users\SattarovTR\Documents\GitHub\beginning\AspNetCoreServices\AuthenticationService:/app
+      - C:\Users\SattarovTR\Documents\GitHub\beginning\AspNetCoreServices:/src
+      - C:\Users\SattarovTR\vsdbg\vs2017u5:/remote_debugger:rw
+#$nuget_volume_mapping_authenticationservice$
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+
+    entrypoint: tail -f /dev/null
+    labels:
+      com.microsoft.visualstudio.debuggee.program: "dotnet"
+      #com.microsoft.visualstudio.debuggee.arguments: " $debuggee_arguments_probing_paths_authenticationservice$ \"/app/bin/Debug/net5.0/AuthenticationService.dll\""
+      com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
+      com.microsoft.visualstudio.debuggee.killprogram: "/bin/sh -c \"if PID=$$(pidof dotnet); then kill $$PID; fi\""
+    tty: true
+  imageservice:
+    image: imageservice:dev
+    container_name: ImageService
+    build:
+      target: base
+      labels:
+        com.microsoft.created-by: "visual-studio"
+        com.microsoft.visual-studio.project-name: "ImageService"
+    environment:
+      - DOTNET_USE_POLLING_FILE_WATCHER=1
+      - ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true
+      #- NUGET_FALLBACK_PACKAGES=$container_paths_to_fallback_packages_imageservice$
+    volumes:
+      - C:\Users\SattarovTR\Documents\GitHub\beginning\AspNetCoreServices\ImageService:/app
+      - C:\Users\SattarovTR\Documents\GitHub\beginning\AspNetCoreServices:/src
+      - C:\Users\SattarovTR\vsdbg\vs2017u5:/remote_debugger:rw
+#$nuget_volume_mapping_imageservice$
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+
+    entrypoint: tail -f /dev/null
+    labels:
+      com.microsoft.visualstudio.debuggee.program: "dotnet"
+      #com.microsoft.visualstudio.debuggee.arguments: " $debuggee_arguments_probing_paths_imageservice$ \"/app/bin/Debug/net5.0/ImageService.dll\""
+      com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
+      com.microsoft.visualstudio.debuggee.killprogram: "/bin/sh -c \"if PID=$$(pidof dotnet); then kill $$PID; fi\""
+    tty: true
+
+  priceservice:
+    image: priceservice:dev
+    container_name: PriceService
+    build:
+      target: base
+      labels:
+        com.microsoft.created-by: "visual-studio"
+        com.microsoft.visual-studio.project-name: "PriceService"
+    environment:
+      - DOTNET_USE_POLLING_FILE_WATCHER=1
+      - ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true
+      #- NUGET_FALLBACK_PACKAGES=$container_paths_to_fallback_packages_priceservice$
+    volumes:
+      - C:\Users\SattarovTR\Documents\GitHub\beginning\AspNetCoreServices\PriceService:/app
+      - C:\Users\SattarovTR\Documents\GitHub\beginning\AspNetCoreServices:/src
+      - C:\Users\SattarovTR\vsdbg\vs2017u5:/remote_debugger:rw
+#$nuget_volume_mapping_priceservice$
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+
+    entrypoint: tail -f /dev/null
+    labels:
+      com.microsoft.visualstudio.debuggee.program: "dotnet"
+      #com.microsoft.visualstudio.debuggee.arguments: " $debuggee_arguments_probing_paths_priceservice$ \"/app/bin/Debug/net5.0/PriceService.dll\""
+      com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
+      com.microsoft.visualstudio.debuggee.killprogram: "/bin/sh -c \"if PID=$$(pidof dotnet); then kill $$PID; fi\""
+    tty: true
+
+  productservice:
+    image: productservice:dev
+    container_name: ProductService
+    build:
+      target: base
+      labels:
+        com.microsoft.created-by: "visual-studio"
+        com.microsoft.visual-studio.project-name: "ProductService"
+    environment:
+      - DOTNET_USE_POLLING_FILE_WATCHER=1
+      - ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true
+      #- NUGET_FALLBACK_PACKAGES=$container_paths_to_fallback_packages_productservice$
+    volumes:
+      - C:\Users\SattarovTR\Documents\GitHub\beginning\AspNetCoreServices\ProductService:/app
+      - C:\Users\SattarovTR\Documents\GitHub\beginning\AspNetCoreServices:/src
+      - C:\Users\SattarovTR\vsdbg\vs2017u5:/remote_debugger:rw
+#$nuget_volume_mapping_productservice$
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+
+    entrypoint: tail -f /dev/null
+    labels:
+      com.microsoft.visualstudio.debuggee.program: "dotnet"
+      #com.microsoft.visualstudio.debuggee.arguments: " $debuggee_arguments_probing_paths_productservice$ \"/app/bin/Debug/net5.0/ProductService.dll\""
+      com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
+      com.microsoft.visualstudio.debuggee.killprogram: "/bin/sh -c \"if PID=$$(pidof dotnet); then kill $$PID; fi\""
+    tty: true

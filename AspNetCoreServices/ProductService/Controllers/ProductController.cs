@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
-using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using ProductService.Clients;
-using ProductService.Entity;
 using ProductService.Interfaces;
 using ProductService.Models;
 
@@ -41,12 +39,14 @@ namespace ProductService.Controllers
 
 
 
+        [Authorize]
         [HttpPost("{id}")]
         public async Task Create(ProductModel product)
         {
             await _productService.Create(product);            
         }
 
+        [Authorize]
         [HttpPost]
         public async Task CreateMany(IEnumerable<ProductModel> products)
         {
@@ -55,13 +55,14 @@ namespace ProductService.Controllers
 
 
 
-
+        [Authorize]
         [HttpPut("{id}")]
         public async Task Update(ProductModel product)
         {
             await _productService.Update(product);
         }
 
+        [Authorize]
         [HttpPut]
         public async Task UpdateMany(IEnumerable<ProductModel> products)
         {            
@@ -70,12 +71,14 @@ namespace ProductService.Controllers
 
 
 
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task Delete(Guid id)
         {
             await _productService.Delete(id);
         }
 
+        [Authorize]
         [HttpDelete]
         public async Task DeleteMany(IEnumerable<Guid> entityIds)
         {
@@ -84,12 +87,14 @@ namespace ProductService.Controllers
 
 
 
+        [Authorize]
         [HttpPut("/api/Product/restore/{id}")]
         public async Task Restore(Guid id)
         {
             await _productService.Restore(id);
         }
 
+        [Authorize]
         [HttpPut("/api/Product/restore")]
         public async Task RestoreMany(IEnumerable<Guid> entityIds)
         {

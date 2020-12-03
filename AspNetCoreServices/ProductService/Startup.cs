@@ -1,25 +1,17 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Threading.Tasks;
+using AuthenticationBase;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using ProductService.Clients;
 using ProductService.Interfaces;
-using ProductService.Services;
 using Refit;
+using System.Net.Http;
 
 namespace ProductService
 {
@@ -35,6 +27,8 @@ namespace ProductService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAppAuthentication(Configuration);
+
             services.AddMvc().AddNewtonsoftJson();
             services.AddControllers().AddNewtonsoftJson(options =>
             {
@@ -61,28 +55,20 @@ namespace ProductService
                 })
             };
 
-
-            services.TryAddTransient(_ => RestService.For<IPoligonClient>(new HttpClient()
+            var clientHandler = new HttpClientHandler
             {
-                BaseAddress = new Uri("https://cloud-api.yandex.net/v1/disk")
-            }, refitSettings));
+                ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => true
+            };
 
-            services.TryAddTransient(_=>RestService.For<IImageClient>(new HttpClient()
-                {
-                    BaseAddress = new Uri("https://localhost:5005")
-                }, refitSettings));
-
-            services.TryAddTransient(_=>RestService.For<IPriceClient>(new HttpClient()
-                {
-                    BaseAddress = new Uri("https://localhost:5003")
-                }, refitSettings));
-
+            services.AddApiClient<IImageClient>(Configuration, refitSettings, "API:ImageClientBaseAddress");
+            services.AddApiClient<IPriceClient>(Configuration, refitSettings, "API:PriceClientBaseAddress");        
 
             services.AddSwaggerGenNewtonsoftSupport();
             services.AddSwaggerGen();
             services.AddControllers();
+            services.AddForwardedHeadersConfiguration();
+
             services.AddTransient<IProductService, Services.ProductService>();
-            services.AddTransient<IYaDiskService, YaDiskService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -104,6 +90,7 @@ namespace ProductService
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

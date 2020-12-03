@@ -2,7 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using ImageService.Entities;
+using ImageService.Interfaces;
+using ImageService.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace ImageService.Services
@@ -10,32 +13,49 @@ namespace ImageService.Services
     public class ImageService : IImageService
     {
         private readonly ImageContext _imageContext;
+        private readonly IMapper _mapper;
+        private readonly IYaDiskService _yaDiskService;
 
-        public ImageService(ImageContext imageContet)
+        public ImageService(ImageContext imageContext, 
+            IMapper mapper, 
+            IYaDiskService yaDiskService)
         {
-            _imageContext = imageContet;            
+            _imageContext = imageContext;
+            _mapper = mapper;
+            _yaDiskService = yaDiskService;
         }
 
 
 
-        public async Task<Image> Get(Guid id)
+        public async Task<ImageModel> Get(Guid id)
         {
-            return await _imageContext.Image.FirstOrDefaultAsync(i => i.Id == id && i.IsDeleted == false);
+            var imageEntity = await _imageContext.Image.FirstOrDefaultAsync(i => i.Id == id && i.IsDeleted == false);
+            var image = _mapper.Map<ImageModel>(imageEntity);
+
+            return image;
         }
 
-        public async Task<IEnumerable<Image>> GetAll()
+        public async Task<IEnumerable<ImageModel>> GetAll()
         {
-            return await _imageContext.Image.Where(i => i.IsDeleted == false).ToListAsync();
+            var imageEntities = await _imageContext.Image.Where(i => i.IsDeleted == false).ToListAsync();
+            var images = _mapper.Map<IEnumerable<ImageModel>>(imageEntities);
+
+            return images;
         }
 
 
 
-        public async Task Create(Image entity)
+        public async Task Create(ImageModel image)
         {
-            if (entity.Id == Guid.Empty)
+            if (image.Id == Guid.Empty)
             {
-                entity.Id = Guid.NewGuid();
+                image.Id = Guid.NewGuid();
             }
+
+            await _yaDiskService.PostImage(image.Path);
+            image.Url = await _yaDiskService.GetUrl(image.Path);
+
+            var entity = _mapper.Map<Image>(image);
 
             entity.CreatedDate = DateTime.UtcNow;
             entity.LastSavedDate = DateTime.UtcNow;
@@ -47,8 +67,16 @@ namespace ImageService.Services
             await _imageContext.SaveChangesAsync();
         }
 
-        public async Task CreateMany(IEnumerable<Image> entities)
+        public async Task CreateMany(IEnumerable<ImageModel> images)
         {
+            foreach (var image in images)
+            {
+                var pathOnYaDisk = await _yaDiskService.PostImage(image.Path);
+                image.Url = await _yaDiskService.GetUrl(pathOnYaDisk);
+            }
+
+            var entities = _mapper.Map<IEnumerable<Image>>(images);
+
             foreach (var entity in entities)
             {
                 if (entity.Id == Guid.Empty)
@@ -69,8 +97,10 @@ namespace ImageService.Services
 
 
 
-        public async Task Update(Image entity)
+        public async Task Update(ImageModel image)
         {
+            var entity = _mapper.Map<Image>(image);
+
             entity.LastSavedDate = DateTime.UtcNow;
             entity.LastSavedBy = Guid.NewGuid();   //Заглушка
 
@@ -78,13 +108,17 @@ namespace ImageService.Services
             await _imageContext.SaveChangesAsync();
         }
 
-        public async Task UpdateMany(IEnumerable<Image> entities)
+        public async Task UpdateMany(IEnumerable<ImageModel> images)
         {
+            var entities = _mapper.Map<IEnumerable<Image>>(images);
+
             foreach (var entity in entities)
             {
                 entity.LastSavedDate = DateTime.UtcNow;
                 entity.LastSavedBy = Guid.NewGuid();      //Заглушка
             }
+
+            
 
             _imageContext.Image.UpdateRange(entities);
             await _imageContext.SaveChangesAsync();

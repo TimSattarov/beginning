@@ -1,21 +1,17 @@
+using AuthenticationBase;
+using AuthenticationBase.Models;
 using AuthenticationService.Models;
+using AuthenticationService.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace AuthenticationService
 {
@@ -33,32 +29,10 @@ namespace AuthenticationService
         {
             services.AddControllers();
 
-            services.AddDbContext<AuthenticationDbContext>(options => 
-                options.UseSqlServer(Configuration.GetConnectionString("Authentication")));
-             
-            services.AddIdentity<User, IdentityRole>()
-                    .AddEntityFrameworkStores<AuthenticationDbContext>()
-                    .AddDefaultTokenProviders();
-            services.AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme =
-                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-                .AddJwtBearer(options =>
-                {
-                    options.SaveToken = true;
-                    options.RequireHttpsMetadata = false;
-                    options.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidateIssuer = true,
-                        ValidateAudience = true,
-                        ValidIssuer = Configuration["Security:Issuer"],
-                        ValidAudience = Configuration["Security:Audience"],
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Security:Secret"]))
-                    };
-                }); 
-                           
+            services.AddAppAuthentication(Configuration);
+            services.AddTransient<AppSecurity>();
+
+            services.AddScoped<IAuthenticationService, Services.AuthenticationService>();
 
             services.AddSwaggerGenNewtonsoftSupport();
             services.AddSwaggerGen();

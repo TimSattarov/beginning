@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using AuthenticationBase;
 using AutoMapper;
+using ImageService.Clients;
+using ImageService.Interfaces;
 using ImageService.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -33,6 +36,8 @@ namespace ImageService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAppAuthentication(Configuration);
+
             services.AddMvc().AddNewtonsoftJson();
             services.AddControllers().AddNewtonsoftJson(options =>
             {
@@ -51,7 +56,14 @@ namespace ImageService
                 })
             };
 
+            services.TryAddTransient(_ => RestService.For<IPoligonClient>(new HttpClient()
+            {
+                BaseAddress = new Uri(Configuration["Api:YaDiskBaseAddress"])
+            }, refitSettings));
+
             services.AddTransient<IImageService, ImageService.Services.ImageService>();
+            services.AddTransient<IYaDiskService, YaDiskService>();
+
             services.AddSwaggerGenNewtonsoftSupport();
             services.AddSwaggerGen();
             
@@ -81,6 +93,7 @@ namespace ImageService
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

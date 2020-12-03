@@ -9,7 +9,6 @@ namespace ProductService.Models
         public string Name { get; set; }
         public string Description { get; set; }        
 
-
         public IEnumerable<ImageModel> Images { get; set; }
         public IEnumerable<PriceModel> Prices { get; set; }
     }

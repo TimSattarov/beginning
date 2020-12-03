@@ -9,9 +9,6 @@ namespace ProductService.Models
         public float SalePrice { get; set; }
         public float RRPrice { get; set; }
         
-
-
         public Guid ProductId { get; set; }
-        //public ProductModel Product { get; set; }
     }
 }

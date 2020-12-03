@@ -64,5 +64,9 @@ C:\Users\SattarovTR\Documents\GitHub\beginning\AspNetCoreServices\ImageService\b
 C:\Users\SattarovTR\Documents\GitHub\beginning\AspNetCoreServices\ImageService\bin\Debug\net5.0\ImageService.dll
 C:\Users\SattarovTR\Documents\GitHub\beginning\AspNetCoreServices\ImageService\bin\Debug\net5.0\ref\ImageService.dll
 C:\Users\SattarovTR\Documents\GitHub\beginning\AspNetCoreServices\ImageService\bin\Debug\net5.0\ImageService.pdb
-C:\Users\SattarovTR\Documents\GitHub\beginning\AspNetCoreServices\ImageService\obj\Debug\net5.0\ImageService.csprojAssemblyReference.cache
 C:\Users\SattarovTR\Documents\GitHub\beginning\AspNetCoreServices\ImageService\obj\Debug\net5.0\ImageService.genruntimeconfig.cache
+C:\Users\SattarovTR\Documents\GitHub\beginning\AspNetCoreServices\ImageService\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\SattarovTR\Documents\GitHub\beginning\AspNetCoreServices\ImageService\bin\Debug\net5.0\AuthenticationBase.dll
+C:\Users\SattarovTR\Documents\GitHub\beginning\AspNetCoreServices\ImageService\bin\Debug\net5.0\AuthenticationBase.pdb
+C:\Users\SattarovTR\Documents\GitHub\beginning\AspNetCoreServices\ImageService\obj\Debug\net5.0\ImageService.csprojAssemblyReference.cache
+C:\Users\SattarovTR\Documents\GitHub\beginning\AspNetCoreServices\ImageService\bin\Debug\net5.0\RestSharp.dll
