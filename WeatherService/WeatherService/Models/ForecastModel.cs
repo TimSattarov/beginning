@@ -9,7 +9,7 @@ namespace WeatherService.Models
     {
         public string Date { get; set; }
         public string City { get; set; }
-        public double Temperature { get; set; }
+        public string Temperature { get; set; }
         public string TemperatureMetric { get; set; }
     }
 }

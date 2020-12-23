@@ -1,17 +1,9 @@
-using System;
-using System.Net.Http;
-using System.Xml;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
-using Refit;
-using WeatherService.Clients;
 using WeatherService.Services;
 
 namespace WeatherService
@@ -32,28 +24,12 @@ namespace WeatherService
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "WeatherService", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo 
+                { 
+                    Title = "WeatherService", 
+                    Version = "v1" 
+                });
             });
-
-            var refitSettings = new RefitSettings()
-            {
-                ContentSerializer = new XmlContentSerializer(new XmlContentSerializerSettings
-                    {
-                        XmlReaderWriterSettings = new XmlReaderWriterSettings()
-                        {
-                            ReaderSettings = new XmlReaderSettings
-                            {
-                                IgnoreWhitespace = true
-                            }
-                        }
-                    }
-                )
-            };
-
-            services.TryAddTransient(_ => RestService.For<IOpenWeatherClient>(new HttpClient()
-            {
-                BaseAddress = new Uri(Configuration["Api:OpenWeatherBaseAddress"])
-            }, refitSettings));
 
             services.AddTransient<IWeatherService, Services.WeatherService>();
         }

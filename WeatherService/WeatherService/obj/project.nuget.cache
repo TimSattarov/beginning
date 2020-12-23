@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "B0ePNnXNEzYpgXuR0FDOAN47WlpY1fBBaWWA3TTGn4JYk8/qtOJgQWREkM2+M3Wq14JvEqmMqXh4drGlLxRxdQ==",
+  "dgSpecHash": "vw/xr7k/lgnF9jlc9VIt6vRVAzTTX/bnnw39+B+Sfu0FfRke+Jze0dzr6seI5t9NflZSSkngb0HeVzc2qGemmw==",
   "success": true,
   "projectFilePath": "C:\\Users\\SattarovTR\\Documents\\GitHub\\beginning\\WeatherService\\WeatherService\\WeatherService.csproj",
   "expectedPackageFiles": [
@@ -27,6 +27,7 @@
     "C:\\Users\\SattarovTR\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Users\\SattarovTR\\.nuget\\packages\\refit\\5.2.4\\refit.5.2.4.nupkg.sha512",
     "C:\\Users\\SattarovTR\\.nuget\\packages\\refit.httpclientfactory\\5.2.4\\refit.httpclientfactory.5.2.4.nupkg.sha512",
+    "C:\\Users\\SattarovTR\\.nuget\\packages\\restsharp\\106.11.7\\restsharp.106.11.7.nupkg.sha512",
     "C:\\Users\\SattarovTR\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
     "C:\\Users\\SattarovTR\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.6.3\\swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
     "C:\\Users\\SattarovTR\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.6.3\\swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",

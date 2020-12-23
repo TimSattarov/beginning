@@ -2,36 +2,32 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using Microsoft.Extensions.Configuration;
-using WeatherService.Clients;
+using RestSharp;
 using WeatherService.Models;
 
 namespace WeatherService.Services
 {
     public class WeatherService : IWeatherService
     {
-        private readonly IOpenWeatherClient _openWeather;
         private readonly string _apiKey;
 
-        public WeatherService(IOpenWeatherClient openWeather, IConfiguration configuration)
+        public WeatherService(IConfiguration configuration)
         {
-            _openWeather = openWeather;
             _apiKey = configuration.GetValue<string>("OpenWeatherApiKey");
         }
 
 
-
         public async Task<CurrentTemperatureModel> GetTemperature(string cityName, string metric)
         {
-            if (metric == "celsius") metric = "metric";
-            if (metric == "fahrenheit") metric = "imperial";
-            var response = await _openWeather.GetWeather(cityName, metric, _apiKey);
+            XDocument xDoc = GetXml(cityName, metric, "weather");
 
             var temperature = new CurrentTemperatureModel
             {
-                City = response.City.Name,
-                Temperature = response.Temperature.Value,
-                Metric = response.Temperature.Unit
+                City = xDoc.Element("current").Element("city").Attribute("name").Value,
+                Temperature = double.Parse(xDoc.Element("current").Element("temperature").Attribute("value").Value),
+                Metric = xDoc.Element("current").Element("temperature").Attribute("unit").Value,
             };
 
             return temperature;
@@ -41,13 +37,13 @@ namespace WeatherService.Services
 
         public async Task<CurrentWindModel> GetWind(string cityName)
         {
-            var response = await _openWeather.GetWeather(cityName, "metric", _apiKey);
+            XDocument xDoc = GetXml(cityName, "metric", "weather");
 
             var wind = new CurrentWindModel
             {
-                City = response.City.Name,
-                Speed = response.Wind.Speed.Value,
-                Direction = response.Wind.Direction.Name
+                City = xDoc.Element("current").Element("city").Attribute("name").Value,
+                Speed = double.Parse(xDoc.Element("current").Element("wind").Element("speed").Attribute("value").Value),
+                Direction = xDoc.Element("current").Element("wind").Element("direction").Attribute("name").Value
             };
 
             return wind;
@@ -56,25 +52,42 @@ namespace WeatherService.Services
 
         public async Task<IEnumerable<ForecastModel>> GetForecast(string cityName, string metric)
         {
-            if (metric == "celsius") metric = "metric";
-            if (metric == "fahrenheit") metric = "imperial";
-
-            var response = await _openWeather.GetForecast(cityName, metric, _apiKey);
-
+            XDocument xdoc = GetXml(cityName, metric, "forecast");
             var result = new List<ForecastModel>();
+            var city = xdoc.Element("weatherdata").Element("location").Element("name").Value;
 
-            for (int i = 0; i < response.Forecast.Count; i++)
+            foreach (XElement item in xdoc.Element("weatherdata").Element("forecast").Elements("time"))
             {
                 result.Add(new ForecastModel()
                 {
-                    Date = $"from {response.Forecast[i].from} to {response.Forecast[i].to}",
-                    City = response.City.Name,
-                    Temperature = response.Forecast[i].Temperature.value,
-                    TemperatureMetric = response.Forecast[i].Temperature.unit
+                    Date = $"from {item.Attribute("from").Value} to {item.Attribute("to").Value}",
+                    City = city,
+                    Temperature = item.Element("temperature").Attribute("value").Value,
+                    TemperatureMetric = item.Element("temperature").Attribute("unit").Value
                 });
             }
 
             return result;
+        }
+
+
+
+        private XDocument GetXml(string cityName, string metric, string Uri)
+        {
+            if (metric == "celsius") metric = "metric";
+            if (metric == "fahrenheit") metric = "imperial";
+
+            string baseAdress = $"http://api.openweathermap.org/data/2.5/{Uri}?q={cityName}&appid={_apiKey}&lang=ru&units={metric}&mode=xml";
+
+            var client = new RestClient(baseAdress);
+            var request = new RestRequest(Method.GET)
+            {
+                RequestFormat = DataFormat.Xml,
+            };
+            var response = client.Execute(request);
+
+            XDocument xDoc = XDocument.Parse(response.Content);
+            return xDoc;
         }
     }
 }

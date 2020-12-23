@@ -39,3 +39,4 @@ C:\Users\SattarovTR\Documents\GitHub\beginning\WeatherService\WeatherService\bin
 C:\Users\SattarovTR\Documents\GitHub\beginning\WeatherService\WeatherService\bin\Debug\net5.0\Refit.HttpClientFactory.dll
 C:\Users\SattarovTR\Documents\GitHub\beginning\WeatherService\WeatherService\obj\Debug\net5.0\RefitStubs.g.cs
 C:\Users\SattarovTR\Documents\GitHub\beginning\WeatherService\WeatherService\obj\Debug\net5.0\WeatherService.csprojAssemblyReference.cache
+C:\Users\SattarovTR\Documents\GitHub\beginning\WeatherService\WeatherService\bin\Debug\net5.0\RestSharp.dll
