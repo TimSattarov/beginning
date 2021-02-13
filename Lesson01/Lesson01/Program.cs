@@ -38,6 +38,7 @@ namespace Lesson01
             else Console.WriteLine("Книга не найдена");
 
             Console.ReadLine();
+            Console.ReadLine();
         }
     }
 }
